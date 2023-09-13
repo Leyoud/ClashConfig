@@ -365,6 +365,7 @@ rules:
     - RULE-SET,Sony,🎮 游戏平台
     - RULE-SET,Steam,🎮 游戏平台
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
+    - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
     - RULE-SET,GoogleCN,🎯 全球直连
     - RULE-SET,Scholar,🎯 全球直连
