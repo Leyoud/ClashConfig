@@ -752,7 +752,6 @@ rules:
 #@coolapk 1007
 #https://github.com/lingeringsound/10007_auto
 hosts:
-
   localhost: 127.0.0.1
   localhost: '::1'      
   ip6-loopback: '::1'      
