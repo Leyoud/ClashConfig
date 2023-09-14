@@ -748,7 +748,6 @@ rules:
     - GEOIP,CN,🎯 全球直连
     - MATCH,🐟 漏网之鱼
 
-
 #@coolapk 1007
 #https://github.com/lingeringsound/10007_auto
 hosts:
