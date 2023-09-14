@@ -1,12 +1,10 @@
 #@coolapk 1007
 #https://github.com/lingeringsound/10007_auto
-
 hosts:
   localhost: 127.0.0.1
   localhost: '::1'      
   ip6-loopback: '::1'      
   ip6-localhost: '::1'      
-
   #规则数量:32304
   ##################
   translate.googleapis.com: 108.177.111.90 
