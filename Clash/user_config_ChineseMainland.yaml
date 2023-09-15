@@ -1,0 +1,346 @@
+---
+#-------------------------------------------------------------#
+# Clash使用手册 https://dreamacro.github.io/clash/zh_CN/
+# Clash在线面板 https://clash.razord.top https://yacd.haishan.me
+#-------------------------------------------------------------#
+# General
+mixed-port: 7890
+redir-port: 7892
+external-ui: ./
+log-level: info
+allow-lan: false
+bind-address: '*'
+external-controller: 127.0.0.1:9090
+secret: ''
+ipv6: false
+#-------------------------------------------------------------#
+# Profiles
+mode: rule
+authentication: []
+hosts: {}
+
+dns:
+    enable: true
+    listen: 0.0.0.0:53
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver:
+        # - 223.6.6.6
+        # - 223.5.5.5
+        - tls://dns.alidns.com:853
+        - https://dns.alidns.com/dns-query
+    fake-ip-filter:
+        - +.stun.*.*
+        - +.stun.*.*.*
+        - +.stun.*.*.*.*
+        - +.stun.*.*.*.*.*
+        - '*.n.n.srv.nintendo.net'
+        - +.stun.playstation.net
+        - xbox.*.*.microsoft.com
+        - '*.*.xboxlive.com'
+        - '*.msftncsi.com'
+        - '*.msftconnecttest.com'
+        - WORKGROUP
+
+tun:
+    enable: true
+    stack: gvisor
+    auto-route: true
+    auto-detect-interface: true
+    dns-hijack:
+        - any:53
+
+proxies:
+    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080, username: '', password: '', tls: false, skip-cert-verify: false, udp: true }
+    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080, username: '', password: '', tls: false, skip-cert-verify: false }
+    - { name: 🎶 解锁网易云灰色歌曲(在线), server: music.desperadoj.com, port: 30001, type: ss, cipher: aes-128-gcm, password: desperadoj.com_free_proxy_emx2 }
+proxy-groups:
+    - name: 🌏 国内媒体
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 📺 哔哩哔哩
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: ⚡️ 测速平台
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 🍃 PayPal支付
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: Ⓜ️ 微软服务
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 🍎 苹果服务
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 📢 谷歌FCM
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 🎮 游戏平台
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 🎶 网易音乐
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+          - 🎶 解锁网易云灰色歌曲(本地)
+          - 🎶 解锁网易云灰色歌曲(在线)
+    - name: 🎯 全球直连
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+    - name: 🆎 全球拦截
+      type: select
+      proxies:
+          - REJECT
+          - DIRECT
+    - name: 🐟 漏网之鱼
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
+
+# 规则参考地址
+# https://github.com/ACL4SSR/ACL4SSR
+rule-providers:
+    # 国内媒体
+    # Start
+    iQiyi:
+        type: http
+        behavior: classical
+        path: ./providers/rule/iQiyi.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/iQIYI/iQIYI.yaml
+        interval: 43200
+
+    LineTV:
+        type: http
+        behavior: classical
+        path: ./providers/rule/LineTV.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/LineTV/LineTV.yaml
+        interval: 43200
+
+    TencentVideo:
+        type: http
+        behavior: classical
+        path: ./providers/rule/TencentVideo.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TencentVideo/TencentVideo.yaml
+        interval: 43200
+
+    Youku:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Youku.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Youku/Youku.yaml
+        interval: 43200
+
+    ChinaMedia:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaMedia.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+        interval: 43200
+    # End
+
+    # 哔哩哔哩
+    BilibiliHMT:
+        type: http
+        behavior: classical
+        path: ./providers/rule/BilibiliHMT.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvUnVsZXNldC9CaWxpYmlsaUhNVC5saXN0&type=6
+        interval: 43200
+
+    # 测速平台
+    Speedtest:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Speedtest.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Speedtest/Speedtest.yaml
+        interval: 43200
+
+    # PayPal支付
+    PayPal:
+        type: http
+        behavior: classical
+        path: ./providers/rule/PayPal.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PayPal/PayPal.yaml
+        interval: 43200
+
+    # 微软服务
+    Microsoft:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Microsoft.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
+        interval: 43200
+
+    # 苹果服务
+    Apple:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Apple.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical.yaml
+        interval: 43200
+
+    # 谷歌FCM
+    GoogleFCM:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GoogleFCM.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GoogleFCM/GoogleFCM.yaml
+        interval: 43200
+
+    # 游戏平台
+    # Start
+    Epic:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Epic.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Epic/Epic.yaml
+        interval: 43200
+
+    Sony:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Sony.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Sony/Sony.yaml
+        interval: 43200
+
+    Steam:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Steam.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml
+        interval: 43200
+    # End
+
+    # 网易音乐
+    NeteaseMusic:
+        type: http
+        behavior: classical
+        path: ./providers/rule/NetEaseMusic.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+        interval: 43200
+
+    # 全球直连列表
+    # Start
+    Lan:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Lan.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+        interval: 43200
+
+    MyListDirect:
+        type: http
+        behavior: classical
+        path: ./providers/rule/MyListDirect.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0xleW91ZC9SdWxlcy9tYXN0ZXIvTXlMaXN0RGlyZWN0Lmxpc3Q=&type=6
+        interval: 43200
+
+    GoogleCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GoogleCN.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvUnVsZXNldC9Hb29nbGVDTi5saXN0&type=6
+        interval: 43200
+
+    SteamCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/SteamCN.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml
+        interval: 43200
+
+    Scholar:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Scholar.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Scholar/Scholar.yaml
+        interval: 43200
+
+    UnBan:
+        type: http
+        behavior: classical
+        path: ./providers/rule/UnBan.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvVW5CYW4ubGlzdA==&type=6
+        interval: 43200
+
+    China:
+        type: http
+        behavior: classical
+        path: ./providers/rule/China.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/China/China_Classical.yaml
+        interval: 43200
+
+    ChinaIPs:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaIPs.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+        interval: 43200
+
+    Download:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Download.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml
+        interval: 43200
+    # End
+
+    # 全球广告拦截
+    Advertising:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Advertising.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising_Classical.yaml
+        interval: 43200
+
+rules:
+    - RULE-SET,Advertising,🆎 全球拦截
+    - RULE-SET,Lan,DIRECT
+    - RULE-SET,MyListDirect,DIRECT
+    - RULE-SET,BilibiliHMT,📺 哔哩哔哩
+    - RULE-SET,iQiyi,🌏 国内媒体
+    - RULE-SET,LineTV,🌏 国内媒体
+    - RULE-SET,TencentVideo,🌏 国内媒体
+    - RULE-SET,Youku,🌏 国内媒体
+    - RULE-SET,ChinaMedia,🌏 国内媒体
+    - RULE-SET,Speedtest,⚡️ 测速平台
+    - RULE-SET,PayPal,🍃 PayPal支付
+    - RULE-SET,Microsoft,Ⓜ️ 微软服务
+    - RULE-SET,Apple,🍎 苹果服务
+    - RULE-SET,GoogleFCM,📢 谷歌FCM
+    - RULE-SET,Epic,🎮 游戏平台
+    - RULE-SET,Sony,🎮 游戏平台
+    - RULE-SET,Steam,🎮 游戏平台
+    - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
+    - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
+    - RULE-SET,NeteaseMusic,🎶 网易音乐
+    - RULE-SET,GoogleCN,🎯 全球直连
+    - RULE-SET,SteamCN,🎯 全球直连
+    - RULE-SET,Scholar,🎯 全球直连
+    - RULE-SET,UnBan,🎯 全球直连
+    - RULE-SET,China,🎯 全球直连
+    - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
+    - RULE-SET,Download,🎯 全球直连
+    - GEOIP,CN,🎯 全球直连
+    - MATCH,🐟 漏网之鱼
