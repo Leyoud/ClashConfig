@@ -83,13 +83,22 @@ rule-providers:
         url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
         interval: 43200
 
-    # 全球直连
+    # 全球直连列表
+    # Start
+    Lan:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Lan.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+        interval: 43200
+
     ChinaIPs:
         type: http
         behavior: classical
         path: ./providers/rule/ChinaIPs.yaml
         url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
         interval: 43200
+    # End
 
     # 全球拦截
     Advertising:
@@ -101,6 +110,7 @@ rule-providers:
 
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
+    - RULE-SET,Lan,DIRECT
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
