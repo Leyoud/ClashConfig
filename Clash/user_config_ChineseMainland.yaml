@@ -63,6 +63,11 @@ proxy-groups:
           - Debug
           - 🎶 解锁网易云灰色歌曲(本地)
           - 🎶 解锁网易云灰色歌曲(在线)
+    - name: 🎯 全球直连
+      type: select
+      proxies:
+          - DIRECT
+          - Debug
     - name: 🆎 全球拦截
       type: select
       proxies:
