@@ -92,6 +92,13 @@ rule-providers:
         url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
         interval: 43200
 
+    MyListDirect:
+        type: http
+        behavior: classical
+        path: ./providers/rule/MyListDirect.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0xleW91ZC9SdWxlcy9tYXN0ZXIvTXlMaXN0RGlyZWN0Lmxpc3Q=&type=6
+        interval: 43200
+
     ChinaIPs:
         type: http
         behavior: classical
@@ -111,6 +118,7 @@ rule-providers:
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
+    - RULE-SET,MyListDirect,DIRECT
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
