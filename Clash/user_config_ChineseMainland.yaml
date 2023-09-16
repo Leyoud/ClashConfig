@@ -105,6 +105,13 @@ rule-providers:
         path: ./providers/rule/ChinaIPs.yaml
         url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
         interval: 43200
+
+    Download:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Download.yaml
+        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml
+        interval: 43200
     # End
 
     # 全球拦截
@@ -123,5 +130,6 @@ rules:
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
     - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
+    - RULE-SET,Download,🎯 全球直连
     - GEOIP,CN,🎯 全球直连
     - MATCH,DIRECT
