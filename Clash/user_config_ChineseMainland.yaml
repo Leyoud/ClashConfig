@@ -132,4 +132,4 @@ rules:
     - RULE-SET,NeteaseMusic,🎶 网易音乐
     - RULE-SET,Download,🎯 全球直连
     - GEOIP,CN,🎯 全球直连
-    - MATCH,DIRECT
+    - MATCH,🎯 全球直连
