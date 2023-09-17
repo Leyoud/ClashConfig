@@ -131,7 +131,6 @@ proxy-groups:
       interval: 300
     - name: 🔯 故障转移
       type: fallback
-      lazy: true
       #use: [cfw]
       proxies:
           - Debug
@@ -139,7 +138,6 @@ proxy-groups:
       interval: 300
     - name: 🔮 负载均衡
       type: load-balance
-      lazy: true
       strategy: consistent-hashing # or round-robin
       #use: [cfw]
       proxies:
