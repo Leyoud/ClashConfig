@@ -126,7 +126,7 @@ rule-providers:
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
-    - RULE-SET,MyListDirect,🎯 全球直连
+    - RULE-SET,MyListDirect,DIRECT
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
