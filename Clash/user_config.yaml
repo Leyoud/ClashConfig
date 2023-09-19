@@ -61,9 +61,9 @@ tun:
         - any:53
 
 proxies:
-    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080, username: '', password: '' }
-    - { name: 🎶 解锁网易云灰色歌曲(在线), server: music.desperadoj.com, port: 30001, type: ss, cipher: aes-128-gcm, password: desperadoj.com_free_proxy_emx2 }
-    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080, username: '', password: '' }
+    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080 }
+    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic
+
 # - {name: ss1, type: ss, server: server, port: 443, cipher: chacha20-ietf-poly1305, password: password, udp: true}
 # - {name: ss2, type: ss, server: server, port: 443, cipher: chacha20-ietf-poly1305, password: password, plugin: obfs, plugin-opts: {mode: tls, host: bing.com}}
 # - {name: ss3, type: ss, server: server, port: 443, cipher: chacha20-ietf-poly1305, password: password, plugin: v2ray-plugin, plugin-opts: {mode: websocket, tls: true, skip-cert-verify: true, host: bing.com, path: /, mux: true, headers: {custom: value}}}
@@ -76,7 +76,7 @@ proxies:
 # - {name: trojan, type: trojan, server: server, port: 443, password: yourpsk, udp: true, sni: example.com, alpn: [h2, http/1.1], skip-cert-verify: true}
 # - {name: ssr, type: ssr, server: server, port: 443, cipher: chacha20-ietf, password: password, obfs: tls1.2_ticket_auth, protocol: auth_sha1_v4, obfs-param: domain.tld, protocol-param: dd:cc, udp: true}
 
-# proxy-provider搭配subconverter使用方法
+# proxy-provider搭配subconverter使用教程
 # https://10101.io/2020/02/12/use-clash-proxy-provider-with-subconverter
 proxy-providers:
     ## 所有节点
@@ -324,9 +324,9 @@ proxy-groups:
       type: select
       proxies:
           - DIRECT
-          - 🚀 代理服务
           - 🎶 解锁网易云灰色歌曲(本地)
-          - 🎶 解锁网易云灰色歌曲(在线)
+          - 🚀 代理服务
+          - Debug
     - name: 🎯 全球直连
       type: select
       proxies:

@@ -54,23 +54,19 @@ tun:
         - any:53
 
 proxies:
-    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080, username: '', password: '' }
-    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080, username: '', password: '' }
-    - { name: 🎶 解锁网易云灰色歌曲(在线), server: music.desperadoj.com, port: 30001, type: ss, cipher: aes-128-gcm, password: desperadoj.com_free_proxy_emx2 }
+    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic
 
 proxy-groups:
     - name: 🎶 网易音乐
       type: select
       proxies:
           - DIRECT
-          - Debug
           - 🎶 解锁网易云灰色歌曲(本地)
-          - 🎶 解锁网易云灰色歌曲(在线)
     - name: 🎯 全球直连
       type: select
       proxies:
           - DIRECT
-          - Debug
+          - REJECT
     - name: 🆎 全球拦截
       type: select
       proxies:
@@ -117,7 +113,7 @@ rule-providers:
         interval: 43200
     # End
 
-    # 全球拦截
+    # 全球广告拦截
     Advertising:
         type: http
         behavior: classical
