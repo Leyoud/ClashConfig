@@ -20,11 +20,6 @@ authentication: []
 hosts:
     hanime1.me: 172.67.69.183
     hanime1.*: 104.26.1.18
-    github.com: 20.27.177.113
-    github.*: 140.82.114.3
-    github.**: 140.82.113.4
-    github.***: 140.82.121.3
-    github.****: 20.205.243.166
 
 dns:
     enable: true
