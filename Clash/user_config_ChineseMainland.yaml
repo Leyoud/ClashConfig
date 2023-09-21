@@ -1,5 +1,5 @@
 ---
-# Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/user_config_ChineseMainland.yaml
+# Download https://external.githubfast.com/https/raw.githubusercontent.com/Leyoud/LEYOUD/master/Clash/user_config_ChineseMainland.yaml
 #
 #-------------------------------------------------------------#
 # General
@@ -79,7 +79,7 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/NetEaseMusic.yaml
-        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
         interval: 43200
 
     # 全球直连列表
@@ -88,28 +88,28 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/Lan.yaml
-        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
         interval: 43200
 
-    MyListDirect:
+    ChinaDirectlist:
         type: http
         behavior: classical
-        path: ./providers/rule/MyListDirect.yaml
-        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0xleW91ZC9SdWxlcy9tYXN0ZXIvTXlMaXN0RGlyZWN0Lmxpc3Q=&type=6
+        path: ./providers/rule/ChinaDirectlist.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/Leyoud/Rules/master/ChinaDirectlist.yaml
         interval: 43200
 
     ChinaIPs:
         type: http
         behavior: classical
         path: ./providers/rule/ChinaIPs.yaml
-        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
         interval: 43200
 
     Download:
         type: http
         behavior: classical
         path: ./providers/rule/Download.yaml
-        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
         interval: 43200
     # End
 
@@ -118,13 +118,13 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/Advertising.yaml
-        url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising_Classical.yaml
+        url: https://external.githubfast.com/https/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
         interval: 43200
 
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
-    - RULE-SET,MyListDirect,DIRECT
+    - RULE-SET,ChinaDirectlist,DIRECT
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
