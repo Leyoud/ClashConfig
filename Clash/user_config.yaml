@@ -426,7 +426,7 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/GlobalProxylist.yaml
-        url: https://raw.fgit.cf/Leyoud/Rules/master/ChinaDirectlist.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/GlobalProxylist.yaml
         interval: 43200
 
     Global:
