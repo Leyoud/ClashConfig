@@ -687,7 +687,6 @@ rule-providers:
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
-    - RULE-SET,ChinaDirectlist,DIRECT
     - RULE-SET,Telegram,📲 电报消息
     - RULE-SET,YouTube,📹 油管视频
     - RULE-SET,Netflix,🎥 奈飞视频
@@ -714,6 +713,7 @@ rules:
     - RULE-SET,GlobalProxylist,🚀 代理服务
     - RULE-SET,Global,🚀 代理服务
     - RULE-SET,iQiyiMHT,🚀 代理服务
+    - RULE-SET,ChinaDirectlist,🎯 全球直连
     - RULE-SET,GoogleCN,🎯 全球直连
     - RULE-SET,SteamCN,🎯 全球直连
     - RULE-SET,Scholar,🎯 全球直连

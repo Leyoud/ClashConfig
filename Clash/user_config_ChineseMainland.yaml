@@ -124,10 +124,10 @@ rule-providers:
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
-    - RULE-SET,ChinaDirectlist,DIRECT
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
+    - RULE-SET,ChinaDirectlist,🎯 全球直连
     - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
     - RULE-SET,Download,🎯 全球直连
     - GEOIP,CN,🎯 全球直连
