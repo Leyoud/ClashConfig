@@ -1,1 +1,1 @@
-<h3><a href="https://github.com/Leyoud/clash-config/blob/master/Clash/user_config.yaml">user_config</a></h3>
+<h3><a color="#000" href="https://github.com/Leyoud/clash-config/blob/master/Clash/user_config.yaml">🔗user_config.yaml</a></h3>
