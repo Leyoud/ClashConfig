@@ -19,7 +19,7 @@ authentication: []
 
 hosts:
     hanime1.me: 172.67.69.183
-    hanime1.*: 104.26.1.18
+    '+.hanime1.me': 104.26.1.18
 
 dns:
     enable: true
@@ -54,7 +54,7 @@ tun:
         - any:53
 
 proxies:
-    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic
+    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic server
 
 proxy-groups:
     - name: 🎶 网易音乐
@@ -80,7 +80,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/NetEaseMusic.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
-        interval: 43200
+        interval: 86400
 
     # 全球直连列表
     # Start
@@ -89,28 +89,28 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Lan.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
-        interval: 43200
+        interval: 86400
 
     ProcessNameDirectlist:
         type: http
         behavior: classical
         path: ./providers/rule/ProcessNameDirectlist.yaml
         url: https://raw.fgit.cf/Leyoud/Rules/master/ProcessNameDirectlist.yaml
-        interval: 43200
+        interval: 86400
 
     ChinaIPs:
         type: http
         behavior: classical
         path: ./providers/rule/ChinaIPs.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
-        interval: 43200
+        interval: 86400
 
     Download:
         type: http
         behavior: classical
         path: ./providers/rule/Download.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
-        interval: 43200
+        interval: 86400
     # End
 
     # 全球广告拦截
@@ -119,7 +119,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Advertising.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
-        interval: 43200
+        interval: 86400
 
 rules:
     - RULE-SET,Advertising,🆎 全球拦截
