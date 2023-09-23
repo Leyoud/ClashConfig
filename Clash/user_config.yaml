@@ -28,7 +28,7 @@ defaults:
       # 订阅更新时间(s)
       providersHTTPInterval: &providersHTTPInterval 86400, # 24h
 
-      # 测试延迟网址 & 间隔时长(s)
+      # 延迟测试地址 & 间隔时长(s)
       delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300 }
     }
 
