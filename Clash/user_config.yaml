@@ -22,7 +22,7 @@ hosts: {}
 
 defaults:
     {
-      # 此处导入订阅(订阅链接1|订阅链接2|订阅链接++...), 'proxy-providers'处启用节点, 'proxy-groups'处启用'use'
+      # 该处导入订阅(订阅链接1|订阅链接2|订阅链接++...), 'proxy-providers'处启用节点, 'proxy-groups'处启用'use'
       subURL: &subURL 'https://sub.id9.cc/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++...|&insert=false&emoji=true&list=true&udp=true&fdn=false',
 
       # 订阅更新时间(s)
@@ -256,6 +256,29 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
         interval: *providersHTTPInterval
 
+    # 全球直连列表(一)
+    # Start
+    ChinaDirectlist:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaDirectlist.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/ChinaDirectlist.yaml
+        interval: *providersHTTPInterval
+
+    GoogleCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GoogleCN.yaml
+        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvUnVsZXNldC9Hb29nbGVDTi5saXN0&type=6
+        interval: *providersHTTPInterval
+
+    SteamCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/SteamCN.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+        interval: *providersHTTPInterval
+    # End
 
     # 电报消息
     Telegram:
@@ -408,29 +431,8 @@ rule-providers:
         interval: *providersHTTPInterval
     # End
 
-    # 全球直连列表
+    # 全球直连列表(二)
     # Start
-    ChinaDirectlist:
-        type: http
-        behavior: classical
-        path: ./providers/rule/ChinaDirectlist.yaml
-        url: https://raw.fgit.cf/Leyoud/Rules/master/ChinaDirectlist.yaml
-        interval: *providersHTTPInterval
-
-    GoogleCN:
-        type: http
-        behavior: classical
-        path: ./providers/rule/GoogleCN.yaml
-        url: https://sub.id9.cc/getruleset?url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvUnVsZXNldC9Hb29nbGVDTi5saXN0&type=6
-        interval: *providersHTTPInterval
-
-    SteamCN:
-        type: http
-        behavior: classical
-        path: ./providers/rule/SteamCN.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
-        interval: *providersHTTPInterval
-
     China:
         type: http
         behavior: classical
@@ -457,6 +459,9 @@ rules:
     - RULE-SET,Lan,DIRECT
     - RULE-SET,ProcessNameDirectlist,DIRECT
     - RULE-SET,Advertising,🆎 全球拦截
+    - RULE-SET,ChinaDirectlist,🎯 全球直连
+    - RULE-SET,GoogleCN,🎯 全球直连
+    - RULE-SET,SteamCN,🎯 全球直连
     - RULE-SET,Telegram,📲 电报消息
     - RULE-SET,YouTube,📹 油管视频
     - RULE-SET,Netflix,🎥 奈飞视频
@@ -478,9 +483,6 @@ rules:
     - RULE-SET,NeteaseMusic,🎶 网易音乐
     - RULE-SET,GlobalProxylist,🚀 代理服务
     - RULE-SET,Global,🚀 代理服务
-    - RULE-SET,ChinaDirectlist,🎯 全球直连
-    - RULE-SET,GoogleCN,🎯 全球直连
-    - RULE-SET,SteamCN,🎯 全球直连
     - RULE-SET,China,🎯 全球直连
     - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
     - RULE-SET,Download,🎯 全球直连
