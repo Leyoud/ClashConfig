@@ -122,9 +122,9 @@ rule-providers:
         interval: 86400
 
 rules:
-    - RULE-SET,Advertising,🆎 全球拦截
     - RULE-SET,Lan,DIRECT
     - RULE-SET,ProcessNameDirectlist,DIRECT
+    - RULE-SET,Advertising,🆎 全球拦截
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
