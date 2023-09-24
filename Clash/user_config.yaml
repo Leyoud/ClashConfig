@@ -23,6 +23,7 @@ hosts: {}
 # 食用说明:
 # 1. 'defaults.subURL'处导入订阅, 'proxy-providers'处启用节点, 'proxy-groups'处启用'use'
 # 2. 'defaults.subURL'基于 https://id9.cc 提供subconverter, 详细参数见 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
+# 3. 'rule-providers' 基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 
 defaults:
     {
@@ -233,7 +234,6 @@ proxy-groups: # 必须存在节点才能启用'use: [cfw]', 必须存在对应�
         #use: [nf]
       }
 
-# 规则地址 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 rule-providers:
     # 局域网直连列表
     # Staert
