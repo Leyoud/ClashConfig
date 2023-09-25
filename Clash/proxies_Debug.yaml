@@ -1,0 +1,8 @@
+# 占位节点
+proxies:
+    - { name: Debug_HK, type: socks5, server: 127.0.0.1, port: 1081 }
+    - { name: Debug_JP, type: socks5, server: 127.0.0.1, port: 1082 }
+    - { name: Debug_US, type: socks5, server: 127.0.0.1, port: 1083 }
+    - { name: Debug_TW, type: socks5, server: 127.0.0.1, port: 1084 }
+    - { name: Debug_SG, type: socks5, server: 127.0.0.1, port: 1085 }
+    - { name: Debug_NF, type: socks5, server: 127.0.0.1, port: 1086 }

@@ -74,7 +74,7 @@ tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: tru
 proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providersHTTPInterval, health-check: { enable: true, <<: *delayInterval } }
 
 proxyGroupsProxies:
-    proxies1: &proxies1 [🔯 故障转移, ♻️ 自动切换, 🔮 负载均衡, 🔗 链式代理, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, Debug]
+    proxies1: &proxies1 [♻️ 自动切换, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, Debug]
     proxies2: &proxies2 [🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
     proxies3: &proxies3 [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug]
     proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
@@ -93,7 +93,7 @@ proxy-providers: # 必须存在节点才能启用'cfw', 必须存在对应地域
       #hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: 'HK|HongKong|HKT|HKBN|HGC|WTT|CMI|[^-]港|港' },
 
       ## 日本节点
-      #jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan' },
+      #jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|日|JP|Japan' },
 
       ## 美国节点
       #us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
@@ -201,37 +201,37 @@ proxy-groups: # 必须存在节点才能启用'use: [cfw]', 必须存在对应�
       }
 
     - {
-        name: 🇭🇰 香港节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [hk]
-      }
-
-    - {
-        name: 🇯🇵 日本节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [jp]
-      }
-
-    - {
-        name: 🇺🇲 美国节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [us]
-      }
-
-    - {
-        name: 🇨🇳 台湾节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [tw]
-      }
-
-    - {
-        name: 🇸🇬 狮城节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [sg]
-      }
-
-    - {
-        name: 🇰🇷 韩国节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [kr]
-      }
-
-    - {
-        name: 🎥 奈飞节点, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
+        name: 🇭🇰 香港节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [hk],
+      },
+,
+    - {,
+        name: 🇯🇵 日本节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [jp],
+      },
+,
+    - {,
+        name: 🇺🇲 美国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [us],
+      },
+,
+    - {,
+        name: 🇨🇳 台湾节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [tw],
+      },
+,
+    - {,
+        name: 🇸🇬 狮城节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [sg],
+      },
+,
+    - {,
+        name: 🇰🇷 韩国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
+        #use: [kr],
+      },
+,
+    - {,
+        name: 🎥 奈飞节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
         #use: [nf]
       }
 
