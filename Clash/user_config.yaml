@@ -31,7 +31,7 @@ defaults:
       # 导入订阅, 即更改(订阅链接1|订阅链接2|订阅链接++)
       subURL: &subURL 'https://sub.id9.cc/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&insert=false&emoji=true&list=true&udp=true&fdn=false',
 
-      # 订阅更新时间(s)
+      # 订阅和规则更新时间(s)
       providersHTTPInterval: &providersHTTPInterval 86400, # 24h
 
       # 延迟测试地址 & 间隔时长(s)

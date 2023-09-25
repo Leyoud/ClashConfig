@@ -4,7 +4,6 @@
 #-------------------------------------------------------------#
 # General
 mixed-port: 7890
-redir-port: 7892
 external-ui: ./
 log-level: info
 allow-lan: false
