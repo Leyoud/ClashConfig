@@ -117,17 +117,17 @@ proxy-groups:
       }
 
     - {
-        name: ♻️ 自动切换, type: url-test, <<: *delayInterval, lazy: true, tolerance: 150,
+        name: ♻️ 自动切换, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
         use: [cfw]
       }
 
     - {
-        name: 🔯 故障转移, type: fallback, <<: *delayInterval, lazy: true,
+        name: 🔯 故障转移, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
         use: [cfw]
       }
 
     - {
-        name: 🔮 负载均衡, type: load-balance, <<: *delayInterval, lazy: true, strategy: consistent-hashing,
+        name: 🔮 负载均衡, type: load-balance, proxies: [Debug], <<: *delayInterval, lazy: true, strategy: consistent-hashing,
         use: [cfw]
       }
 
