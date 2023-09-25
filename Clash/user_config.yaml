@@ -22,9 +22,8 @@ hosts: {}
 
 # 食用说明:
 # 1. 'defaults.subURL' 中导入订阅即可。
-# 2. 'defaults.subURL' 中 'Debug_' 相关占位节点可删除 (https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml)
-# 3. 'defaults.subURL' 基于 https://id9.cc 详细参数见 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
-# 4. 'rule-providers'  基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
+# 2. 'defaults.subURL' 基于 https://id9.cc 详细参数见 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
+# 3. 'rule-providers'  基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 
 defaults:
     {
