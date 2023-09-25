@@ -37,7 +37,7 @@ defaults:
       # 延迟测试地址 & 间隔时长(s)
       delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300 },
 
-      # 'url-test' 延迟差
+      # 'url-test' 延迟容差
       urlTestTolerance: &urlTestTolerance 150
     }
 
