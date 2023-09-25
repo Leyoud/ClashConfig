@@ -7,7 +7,6 @@
 #-------------------------------------------------------------#
 # cfw General
 mixed-port: 7890
-redir-port: 7892
 external-ui: ./
 log-level: info
 allow-lan: false
@@ -22,14 +21,14 @@ authentication: []
 hosts: {}
 
 # 食用说明:
-# 1. 'defaults.subURL'处导入订阅, 'proxy-providers'处启用节点, 'proxy-groups'处启用'use'
+# 1. 'defaults.subURL'处导入订阅即可
 # 2. 'defaults.subURL'基于 https://id9.cc 提供 subconverter, 详细参数见 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
 # 3. 'rule-providers' 基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 
 defaults:
     {
-      # 导入订阅, 即更改(订阅链接1|订阅链接2|订阅链接++...)
-      subURL: &subURL 'https://sub.id9.cc/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++...|&insert=false&emoji=true&list=true&udp=true&fdn=false',
+      # 导入订阅, 即更改(订阅链接1|订阅链接2|订阅链接++)
+      subURL: &subURL 'https://sub.id9.cc/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&insert=false&emoji=true&list=true&udp=true&fdn=false',
 
       # 订阅更新时间(s)
       providersHTTPInterval: &providersHTTPInterval 86400, # 24h
@@ -81,55 +80,55 @@ proxyGroupsProxies:
     proxies5: &proxies5 [DIRECT, Debug, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
 
 proxies:
-    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080 }  # 占位 | socks5
+    - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080 } # 占位 | socks5
     - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic server
 
-proxy-providers: # 必须存在节点才能启用'cfw', 必须存在对应地域节点才能启用'hk'|'jp'|'us'...
+proxy-providers:
     {
-      ## 所有节点
-      #cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
+      # 所有节点
+      cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
 
-      ## 香港节点
-      #hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: 'HK|HongKong|HKT|HKBN|HGC|WTT|CMI|[^-]港|港' },
+      # 香港节点
+      hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: 'HK|HongKong|HKT|HKBN|HGC|WTT|CMI|[^-]港|港' },
 
-      ## 日本节点
-      #jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|日|JP|Japan' },
+      # 日本节点
+      jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|日|JP|Japan' },
 
-      ## 美国节点
-      #us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
+      # 美国节点
+      us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
 
-      ## 台湾节点
-      #tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: '台|新北|彰化|TW|Taiwan' },
+      # 台湾节点
+      tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: '台|新北|彰化|TW|Taiwan' },
 
-      ## 狮城节点
-      #sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '新加坡|坡|狮城|SG|Singapore' },
+      # 狮城节点
+      sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '新加坡|坡|狮城|SG|Singapore' },
 
-      ## 韩国节点
-      #kr: {  <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: 'KR|Korea|KOR|首尔|韩|韓' },
+      # 韩国节点
+      kr: {  <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: 'KR|Korea|KOR|首尔|韩|韓' },
 
-      ## 奈飞节点
-      #nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: 'NF|奈飞|解锁|Netflix|NETFLIX|Media' }
+      # 奈飞节点
+      nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: 'NF|奈飞|解锁|Netflix|NETFLIX|Media' }
     }
 
-proxy-groups: # 必须存在节点才能启用'use: [cfw]', 必须存在对应地域节点才能启用'use: [hk]'|'use: [jp]'|'use: [us]'...
+proxy-groups:
     - {
         name: 🚀 代理服务,type: select, proxies: *proxies1,
-        #use: [cfw]
+        use: [cfw]
       }
 
     - {
-        name: ♻️ 自动切换, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [cfw]
+        name: ♻️ 自动切换, type: url-test, <<: *delayInterval, lazy: true, tolerance: 150,
+        use: [cfw]
       }
 
     - {
-        name: 🔯 故障转移, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
-        #use: [cfw]
+        name: 🔯 故障转移, type: fallback, <<: *delayInterval, lazy: true,
+        use: [cfw]
       }
 
     - {
-        name: 🔮 负载均衡, type: load-balance, proxies: [Debug], <<: *delayInterval, lazy: true, strategy: consistent-hashing,
-        #use: [cfw]
+        name: 🔮 负载均衡, type: load-balance, <<: *delayInterval, lazy: true, strategy: consistent-hashing,
+        use: [cfw]
       }
 
     - {
@@ -202,37 +201,37 @@ proxy-groups: # 必须存在节点才能启用'use: [cfw]', 必须存在对应�
 
     - {
         name: 🇭🇰 香港节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [hk],
-      },
-,
-    - {,
+        use: [hk]
+      }
+
+    - {
         name: 🇯🇵 日本节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [jp],
-      },
-,
-    - {,
+        use: [jp]
+      }
+
+    - {
         name: 🇺🇲 美国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [us],
-      },
-,
-    - {,
+        use: [us]
+      }
+
+    - {
         name: 🇨🇳 台湾节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [tw],
-      },
-,
-    - {,
+        use: [tw]
+      }
+
+    - {
         name: 🇸🇬 狮城节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [sg],
-      },
-,
-    - {,
+        use: [sg]
+      }
+
+    - {
         name: 🇰🇷 韩国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [kr],
-      },
-,
-    - {,
+        use: [kr]
+      }
+
+    - {
         name: 🎥 奈飞节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: 150,
-        #use: [nf]
+        use: [nf]
       }
 
 rule-providers:
