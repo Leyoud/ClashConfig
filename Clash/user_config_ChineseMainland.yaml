@@ -2,6 +2,7 @@
 # Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/user_config_ChineseMainland.yaml
 #
 #-------------------------------------------------------------#
+# cfw General
 mixed-port: 7890
 external-ui: ./
 log-level: info
@@ -11,10 +12,12 @@ external-controller: 127.0.0.1:9090
 secret: ''
 ipv6: false
 #-------------------------------------------------------------#
+# cfw Profiles
 mode: rule
 authentication: []
 
 hosts:
+    localhost: 127.0.0.1
     hanime1.me: 172.67.69.183
     '+.hanime1.me': 104.26.1.18
 
@@ -69,13 +72,6 @@ proxy-groups:
           - DIRECT
 
 rule-providers:
-    NeteaseMusic:
-        type: http
-        behavior: classical
-        path: ./providers/rule/NetEaseMusic.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
-        interval: 86400
-
     Lan:
         type: http
         behavior: classical
@@ -90,13 +86,6 @@ rule-providers:
         url: https://raw.fgit.cf/Leyoud/Rules/master/ProcessNameDirectlist.yaml
         interval: 86400
 
-    ChinaIPs:
-        type: http
-        behavior: classical
-        path: ./providers/rule/ChinaIPs.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
-        interval: 86400
-
     Advertising:
         type: http
         behavior: classical
@@ -104,10 +93,32 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
         interval: 86400
 
+    AdvertisingAppend:
+        type: http
+        behavior: classical
+        path: ./providers/rule/AdvertisingAppend.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/AdvertisingAppend.yaml
+        interval: 86400
+
+    NeteaseMusic:
+        type: http
+        behavior: classical
+        path: ./providers/rule/NetEaseMusic.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+        interval: 86400
+
+    ChinaIPs:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaIPs.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+        interval: 86400
+
 rules:
     - RULE-SET,Lan,DIRECT
     - RULE-SET,ProcessNameDirectlist,DIRECT
     - RULE-SET,Advertising,🆎 全球拦截
+    - RULE-SET,AdvertisingAppend,🆎 全球拦截
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
     - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐

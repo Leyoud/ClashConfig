@@ -18,7 +18,6 @@ ipv6: false
 # cfw Profiles
 mode: rule
 authentication: []
-hosts: {}
 
 # 食用说明:
 # 1. 'defaults.subURL' 中导入服务商提供订阅即可
@@ -39,6 +38,8 @@ defaults:
       # 'url-test' 延迟容差(ms)
       urlTestTolerance: &urlTestTolerance 150
     }
+
+hosts: { localhost: 127.0.0.1, '+.localhost': '::1', ip6-localhost: '::1', ip6-loopback: '::1' }
 
 dns:
     enable: true
@@ -255,13 +256,22 @@ rule-providers:
         interval: *providersHTTPInterval
     # End
 
-    # 全球广告拦截
+    # 全球拦截列表
+    # Start
     Advertising:
         type: http
         behavior: classical
         path: ./providers/rule/Advertising.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
         interval: *providersHTTPInterval
+
+    AdvertisingAppend:
+        type: http
+        behavior: classical
+        path: ./providers/rule/AdvertisingAppend.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/AdvertisingAppend.yaml
+        interval: *providersHTTPInterval
+    # End
 
     # 全球直连列表(一)
     # Start
@@ -466,6 +476,7 @@ rules:
     - RULE-SET,Lan,DIRECT
     - RULE-SET,ProcessNameDirectlist,DIRECT
     - RULE-SET,Advertising,🆎 全球拦截
+    - RULE-SET,AdvertisingAppend,🆎 全球拦截
     - RULE-SET,ChinaDirectlist,🎯 全球直连
     - RULE-SET,GoogleCN,🎯 全球直连
     - RULE-SET,SteamCN,🎯 全球直连
