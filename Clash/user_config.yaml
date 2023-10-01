@@ -19,13 +19,13 @@ ipv6: false
 mode: rule
 authentication: []
 
-# 配置文件说明:
+# 配置说明:
 # 1. 'defaults.subURL' 基于 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
 # 2. 'rule-providers'  基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 
 defaults:
     {
-      # 导入订阅, 即更改(订阅链接1|订阅链接2|订阅链接++)
+      # 添加服务商提供订阅(url=...)
       subURL: &subURL 'http://127.0.0.1:25500/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&emoji=true&list=true&udp=true',
 
       # 订阅和规则更新时间(s)
