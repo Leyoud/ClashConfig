@@ -34,7 +34,7 @@ defaults:
       providersHTTPInterval: &providersHTTPInterval 86400, # 24h
 
       # 延迟测试地址 & 间隔时长(s)
-      delayInterval: &delayInterval { url: 'https://www.gstatic.com/generate_204', interval: 300 },
+      delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300 },
 
       # 'url-test' 延迟容差(ms)
       urlTestTolerance: &urlTestTolerance 150
@@ -89,28 +89,28 @@ proxies:
 proxy-providers:
     {
       # 所有节点
-      cfw: { <<: *proxyProviders, path: './providers/proxy/cfw.yaml' },
+      cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
 
       # 香港节点
-      hk: { <<: *proxyProviders, path: './providers/proxy/hk.yaml', filter: 'HK|HongKong|HKT|HKBN|HGC|WTT|CMI|港' },
+      hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: 'HK|HongKong|HKT|HKBN|HGC|WTT|CMI|港' },
 
       # 日本节点''
-      jp: { <<: *proxyProviders, path: './providers/proxy/jp.yaml', filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|日|JP|Japan' },
+      jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '日本|川日|东京|大阪|泉日|埼玉|沪日|深日|日|JP|Japan' },
 
       # 美国节点''
-      us: { <<: *proxyProviders, path: './providers/proxy/us.yaml', filter: '美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
+      us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
 
       # 台湾节点''
-      tw: { <<: *proxyProviders, path: './providers/proxy/tw.yaml', filter: '台|新北|彰化|TW|Taiwan' },
+      tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: '台|新北|彰化|TW|Taiwan' },
 
       # 狮城节点''
-      sg: { <<: *proxyProviders, path: './providers/proxy/sg.yaml', filter: '新加坡|坡|狮城|SG|Singapore' },
+      sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '新加坡|坡|狮城|SG|Singapore' },
 
       # 韩国节点''
-      kr: { <<: *proxyProviders, path: './providers/proxy/kr.yaml', filter: 'KR|Korea|KOR|首尔|韩|韓' },
+      kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: 'KR|Korea|KOR|首尔|韩|韓' },
 
       # 奈飞节点''
-      nf: { <<: *proxyProviders, path: './providers/proxy/nf.yaml', filter: 'NF|奈飞|解锁|Netflix|NETFLIX|Media' }
+      nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: 'NF|奈飞|解锁|Netflix|NETFLIX|Media' }
     }
 
 proxy-groups:
