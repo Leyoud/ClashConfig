@@ -51,7 +51,7 @@ tun:
         - any:53
 
 proxies:
-    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic server
+    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 }
 
 proxy-groups:
     - name: 🎶 网易音乐
