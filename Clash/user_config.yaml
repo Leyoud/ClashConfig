@@ -20,7 +20,7 @@ mode: rule
 authentication: []
 
 # 配置说明:
-# 1. 'defaults.subURL' 基于 https://github.com/tindy2013/subconverter/blob/master/README-cn.md
+# 1. 'defaults.subURL' 基于 subconverter.exe 详细参数见 https://github.com/tindy2013/subconverter/blob/master
 # 2. 'rule-providers'  基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
 
 defaults:
