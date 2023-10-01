@@ -107,7 +107,7 @@ proxy-providers:
       sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '新加坡|坡|狮城|SG|Singapore' },
 
       # 韩国节点
-      kr: {  <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: 'KR|Korea|KOR|首尔|韩|韓' },
+      kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: 'KR|Korea|KOR|首尔|韩|韓' },
 
       # 奈飞节点
       nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: 'NF|奈飞|解锁|Netflix|NETFLIX|Media' }
