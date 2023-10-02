@@ -496,7 +496,6 @@ rules:
     - RULE-SET,Origin,🎮 游戏平台
     - RULE-SET,Nintendo,🎮 游戏平台
     - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
-    - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
     - RULE-SET,NeteaseMusic,🎶 网易音乐
     - RULE-SET,GlobalProxylist,🚀 代理服务
     - RULE-SET,Global,🚀 代理服务
