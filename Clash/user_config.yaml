@@ -38,8 +38,6 @@ defaults:
       urlTestTolerance: &urlTestTolerance 150
     }
 
-hosts: { localhost: 127.0.0.1, '+.localhost': '::1', ip6-localhost: '::1', ip6-loopback: '::1' }
-
 dns:
     enable: true
     listen: 0.0.0.0:53
@@ -70,6 +68,8 @@ dns:
     fallback-filter:
         geoip: true
         geoip-code: CN
+
+hosts: { localhost: 127.0.0.1, '+.localhost': '::1', ip6-localhost: '::1', ip6-loopback: '::1' }
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
