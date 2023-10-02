@@ -115,22 +115,22 @@ proxy-providers:
 
 proxy-groups:
     - {
-        name: 🚀 代理服务,type: select, proxies: *proxies1,
+        name: 🚀 代理服务, type: select, proxies: *proxies1,
         use: [cfw]
       }
 
     - {
-        name: ♻️ 自动切换, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: ♻️ 自动切换, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [cfw]
       }
 
     - {
-        name: 🔯 故障转移, type: fallback, proxies: [Debug], <<: *delayInterval, lazy: true,
+        name: 🔯 故障转移, type: fallback, proxies: [Debug], lazy: true, <<: *delayInterval,
         use: [cfw]
       }
 
     - {
-        name: 🔮 负载均衡, type: load-balance, proxies: [Debug], <<: *delayInterval, lazy: true, strategy: consistent-hashing,
+        name: 🔮 负载均衡, type: load-balance, proxies: [Debug], lazy: true, <<: *delayInterval, strategy: consistent-hashing,
         use: [cfw]
       }
 
@@ -203,37 +203,37 @@ proxy-groups:
       }
 
     - {
-        name: 🇭🇰 香港节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇭🇰 香港节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [hk]
       }
 
     - {
-        name: 🇯🇵 日本节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇯🇵 日本节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [jp]
       }
 
     - {
-        name: 🇺🇲 美国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇺🇲 美国节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [us]
       }
 
     - {
-        name: 🇨🇳 台湾节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇨🇳 台湾节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [tw]
       }
 
     - {
-        name: 🇸🇬 狮城节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇸🇬 狮城节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [sg]
       }
 
     - {
-        name: 🇰🇷 韩国节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🇰🇷 韩国节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [kr]
       }
 
     - {
-        name: 🎥 奈飞节点, type: url-test, proxies: [Debug], <<: *delayInterval, lazy: true, tolerance: *urlTestTolerance,
+        name: 🎥 奈飞节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
         use: [nf]
       }
 
