@@ -69,7 +69,7 @@ dns:
         geoip: true
         geoip-code: CN
 
-hosts: { localhost: 127.0.0.1, '+.localhost': '::1', ip6-localhost: '::1', ip6-loopback: '::1' }
+hosts: { localhost: 127.0.0.1, ip6-localhost: '::1'}
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
