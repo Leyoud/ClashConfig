@@ -18,8 +18,8 @@ authentication: []
 
 hosts:
     localhost: 127.0.0.1
-    '+.hanime1.me': 104.26.1.18
-    hanime1.me: 172.67.69.183
+    hanime1.me: 104.26.1.18
+    +.hanime1.me: 172.67.69.183
 
 dns:
     enable: true
