@@ -20,9 +20,7 @@ dns:
   {
     enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
 
-    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16,
-
-    fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
 
     nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query]
   }
