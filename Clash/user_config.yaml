@@ -171,7 +171,7 @@ proxy-groups:
     }
 
   - {
-      name: 🎯 全球直连, type: select, proxies: [DIRECT, Debug, 🚀 代理服务, ♻️ 自动切换]
+      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT, 🚀 代理服务, ♻️ 自动切换]
     }
 
   - {
