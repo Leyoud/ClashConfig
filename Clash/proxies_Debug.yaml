@@ -1,3 +1,2 @@
-# 占位节点
-proxies:
-    - { name: Debug_HK_JP_US_TW_SG_KR_NF, type: socks5, server: 127.0.0.1, port: 1081 }
+# 占位
+proxies: [{ name: ★ Sub_Debug, type: socks5, server: 127.0.0.1, port: 1081 }]
