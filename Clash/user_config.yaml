@@ -42,13 +42,17 @@ dns:
   {
     enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
 
-    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16,
+
+    fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
 
     # default-nameserver: [223.6.6.6, 223.5.5.5],
 
     nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query],
 
-    fallback: [208.67.222.222, 208.67.220.220, https://doh.opendns.com/dns-query], fallback-filter: {geoip: true, geoip-code: CN}
+    fallback: [208.67.222.222, 208.67.220.220, https://doh.opendns.com/dns-query],
+
+    fallback-filter: {geoip: true, geoip-code: CN}
   }
 
 hosts: { localhost: 127.0.0.1, ip6-localhost: '::1'}
