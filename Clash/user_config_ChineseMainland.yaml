@@ -15,61 +15,36 @@ ipv6: false
 # cfw Profiles
 mode: rule
 authentication: []
-
-hosts:
-    localhost: 127.0.0.1
-    hanime1.me: 104.26.1.18
-    '+.hanime1.me': 172.67.69.183
-
+    
 dns:
-    enable: true
-    listen: 0.0.0.0:53
-    enhanced-mode: fake-ip
-    fake-ip-range: 198.18.0.1/16
-    use-hosts: true
-    nameserver:
-        - tls://dns.alidns.com:853
-        - https://dns.alidns.com/dns-query
-    fake-ip-filter:
-        - +.stun.*.*
-        - +.stun.*.*.*
-        - +.stun.*.*.*.*
-        - +.stun.*.*.*.*.*
-        - '*.n.n.srv.nintendo.net'
-        - +.stun.playstation.net
-        - xbox.*.*.microsoft.com
-        - '*.*.xboxlive.com'
-        - '*.msftncsi.com'
-        - '*.msftconnecttest.com'
-        - WORKGROUP
+  {
+    enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
 
-tun:
-    enable: true
-    stack: gvisor
-    auto-route: true
-    auto-detect-interface: true
-    dns-hijack:
-        - any:53
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16,
 
-proxies:
-    - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 }
+    fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
+
+    nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query]
+  }
+
+hosts: { localhost: 127.0.0.1, hanime1.me: 104.26.1.18, '+.hanime1.me': 172.67.69.183}
+
+tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
+
+proxies: [ { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } ]
 
 proxy-groups:
-    - name: 🎶 网易音乐
-      type: select
-      proxies:
-          - DIRECT
-          - 🎶 解锁网易云灰色歌曲(本地)
-    - name: 🎯 全球直连
-      type: select
-      proxies:
-          - DIRECT
-          - REJECT
-    - name: 🆎 全球拦截
-      type: select
-      proxies:
-          - REJECT
-          - DIRECT
+  - {
+      name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)] 
+    }
+
+  - {
+      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT] 
+    }
+
+  - {
+      name: 🆎 全球拦截, type: select, proxies: [REJECT, DIRECT] 
+    }
 
 rule-providers:
     Lan:
@@ -115,13 +90,13 @@ rule-providers:
         interval: 86400
 
 rules:
-    - RULE-SET,Lan,DIRECT
-    - RULE-SET,ProcessNameDirectlist,DIRECT
-    - RULE-SET,Advertising,🆎 全球拦截
-    - RULE-SET,AdvertisingAppend,🆎 全球拦截
-    - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
-    - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
-    - RULE-SET,NeteaseMusic,🎶 网易音乐
-    - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
-    - GEOIP,CN,🎯 全球直连
-    - MATCH,🎯 全球直连
+  - RULE-SET,Lan,DIRECT
+  - RULE-SET,ProcessNameDirectlist,DIRECT
+  - RULE-SET,Advertising,🆎 全球拦截
+  - RULE-SET,AdvertisingAppend,🆎 全球拦截
+  - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
+  - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
+  - RULE-SET,NeteaseMusic,🎶 网易音乐
+  - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🎯 全球直连
