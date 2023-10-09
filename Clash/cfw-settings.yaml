@@ -96,4 +96,4 @@ connChainType: 2
 trayProxiesStyle: 1
 useSystemEmoji: false
 useModeIcons: false
-latencyTimeout: 300000
+latencyTimeout: 3000
