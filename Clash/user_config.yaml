@@ -60,13 +60,13 @@ proxyGroupsProxies:
     {
       proxies1: &proxies1 [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
 
-      proxies2: &proxies2 [🚀 节点选择, Debug, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+      proxies2: &proxies2 [🚀 代理服务, Debug, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
-      proxies3: &proxies3 [🎥 奈飞节点, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+      proxies3: &proxies3 [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
-      proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug],
+      proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug],
 
-      proxies5: &proxies5 [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
+      proxies5: &proxies5 [DIRECT, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
     }
 
 proxies:
@@ -99,7 +99,7 @@ proxy-providers:
 
 proxy-groups:
   - {
-      name: 🚀 节点选择, type: select, proxies: *proxies1
+      name: 🚀 代理服务, type: select, proxies: *proxies1
     }
 
   - {
@@ -187,7 +187,7 @@ proxy-groups:
     }
 
   - {
-      name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, ♻️ 自动选择, DIRECT, Debug]
+      name: 🐟 漏网之鱼, type: select, proxies: [🚀 代理服务, ♻️ 自动选择, DIRECT, Debug]
     }
 
   - {
@@ -418,7 +418,7 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
         interval: *providersHTTPInterval
 
-    # 节点选择列表
+    # 代理服务列表
     # Start
     GlobalProxylist:
         type: http
@@ -486,8 +486,8 @@ rules:
   - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
   - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
   - RULE-SET,NeteaseMusic,🎶 网易音乐
-  - RULE-SET,GlobalProxylist,🚀 节点选择
-  - RULE-SET,Global,🚀 节点选择
+  - RULE-SET,GlobalProxylist,🚀 代理服务
+  - RULE-SET,Global,🚀 代理服务
   - RULE-SET,China,🎯 全球直连
   - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
   - RULE-SET,Download,🎯 全球直连
