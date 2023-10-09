@@ -11,7 +11,7 @@ external-ui: ./
 log-level: info
 allow-lan: false
 bind-address: '*'
-external-controller: 127.0.0.1:9090 # or 0.0.0.0:9090
+external-controller: 127.0.0.1:9090
 secret: ''
 ipv6: false
 #-------------------------------------------------------------#
@@ -57,66 +57,73 @@ tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: tru
 proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providersHTTPInterval, health-check: { enable: true, <<: *delayInterval } }
 
 proxyGroupsProxies:
-    proxies1: &proxies1 [♻️ 自动切换, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT, Debug]
-    proxies2: &proxies2 [🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
-    proxies3: &proxies3 [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug]
-    proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
-    proxies5: &proxies5 [DIRECT, Debug, 🚀 代理服务, ♻️ 自动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
+    {
+      proxies1: &proxies1 [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
+
+      proxies2: &proxies2 [🚀 节点选择, Debug, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+
+      proxies3: &proxies3 [🎥 奈飞节点, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+
+      proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug],
+
+      proxies5: &proxies5 [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
+    }
 
 proxies:
-  - { name: Debug, type: socks5, server: 127.0.0.1, port: 1080, udp: true } # 占位
-  - { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 } # unblockneteasemusic server
+  - {
+      name: Debug, type: socks5, server: 127.0.0.1, port: 1080, udp: true # 占位
+    }
+
+  - {
+      name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 # unblockneteasemusic server
+    }
 
 proxy-providers:
     {
-      # 所有节点
       cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
 
-      # 香港节点
       hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: '★|港|HK|HongKong|HKT|HKBN|HGC|WTT|CMI' },
 
-      # 日本节点
       jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '★|日|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan' },
 
-      # 美国节点
       us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '★|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
 
-      # 台湾节点
       tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: '★|台|新北|彰化|TW|Taiwan' },
 
-      # 狮城节点
       sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '★|坡|新加坡|狮城|SG|Singapore' },
 
-      # 韩国节点
       kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: '★|韩|KR|Korea|KOR|首尔|韓' },
 
-      # 奈飞节点
       nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: '★|奈飞|NF|解锁|Netflix|NETFLIX|Media' }
     }
 
 proxy-groups:
   - {
-      name: 🚀 代理服务, type: select, proxies: *proxies1,
+      name: 🚀 节点选择, type: select, proxies: *proxies1
+    }
+
+  - {
+      name: 🔰 手动选择, type: select, proxies: [],
       use: [cfw]
     }
 
   - {
-      name: ♻️ 自动切换, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: ♻️ 自动选择, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [cfw]
     }
 
   - {
-      name: 🔯 故障转移, type: fallback, proxies: [Debug], lazy: true, <<: *delayInterval,
+      name: 🔯 故障转移, type: fallback, proxies: [], lazy: true, <<: *delayInterval,
       use: [cfw]
     }
 
   - {
-      name: 🔮 负载均衡, type: load-balance, proxies: [Debug], lazy: true, <<: *delayInterval, strategy: consistent-hashing,
+      name: 🔮 负载均衡, type: load-balance, proxies: [], lazy: true, <<: *delayInterval, strategy: consistent-hashing,
       use: [cfw]
     }
 
   - {
-      name: 🔗 链式代理, type: relay, proxies: [Debug, DIRECT]
+      name: 🔗 链式代理, type: relay, proxies: [Debug]
     }
 
   - {
@@ -168,11 +175,11 @@ proxy-groups:
     }
 
   - {
-      name: 🎶 网易音乐, type: select, proxies: [DIRECT, Debug, 🎶 解锁网易云灰色歌曲(本地), 🚀 代理服务]
+      name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)]
     }
 
   - {
-      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT, 🚀 代理服务, ♻️ 自动切换]
+      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT]
     }
 
   - {
@@ -180,41 +187,41 @@ proxy-groups:
     }
 
   - {
-      name: 🐟 漏网之鱼, type: select, proxies: [🚀 代理服务, ♻️ 自动切换, DIRECT, Debug]
+      name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, ♻️ 自动选择, DIRECT, Debug]
     }
 
   - {
-      name: 🇭🇰 香港节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇭🇰 香港节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [hk]
     }
 
   - {
-      name: 🇯🇵 日本节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇯🇵 日本节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [jp]
     }
 
   - {
-      name: 🇺🇲 美国节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇺🇲 美国节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [us]
     }
 
   - {
-      name: 🇨🇳 台湾节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇨🇳 台湾节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [tw]
     }
 
   - {
-      name: 🇸🇬 狮城节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇸🇬 狮城节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [sg]
     }
 
   - {
-      name: 🇰🇷 韩国节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🇰🇷 韩国节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [kr]
     }
 
   - {
-      name: 🎥 奈飞节点, type: url-test, proxies: [Debug], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
+      name: 🎥 奈飞节点, type: url-test, proxies: [], lazy: true, <<: *delayInterval, tolerance: *urlTestTolerance,
       use: [nf]
     }
 
@@ -411,7 +418,7 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
         interval: *providersHTTPInterval
 
-    # 代理服务列表
+    # 节点选择列表
     # Start
     GlobalProxylist:
         type: http
@@ -479,8 +486,8 @@ rules:
   - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
   - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
   - RULE-SET,NeteaseMusic,🎶 网易音乐
-  - RULE-SET,GlobalProxylist,🚀 代理服务
-  - RULE-SET,Global,🚀 代理服务
+  - RULE-SET,GlobalProxylist,🚀 节点选择
+  - RULE-SET,Global,🚀 节点选择
   - RULE-SET,China,🎯 全球直连
   - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
   - RULE-SET,Download,🎯 全球直连
