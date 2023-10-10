@@ -30,7 +30,7 @@ defaults:
     subURL: &subURL 'http://sub.xeton.dev/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&emoji=true&list=true&udp=true',
 
     # 订阅和规则更新时间(s)
-    providersHTTPInterval: &providersHTTPInterval 86400, # 24h
+    providersInterval: &providersInterval 86400, # 24h
 
     # 延迟测试地址 & 间隔时长(s)
     delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300 },
@@ -54,7 +54,7 @@ hosts: { localhost: 127.0.0.1, ip6-localhost: '::1'}
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
-proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providersHTTPInterval, health-check: { enable: true, <<: *delayInterval } }
+proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providersInterval, health-check: { enable: true, <<: *delayInterval } }
 
 proxyGroupsProxies:
     {
@@ -233,14 +233,14 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Lan.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     ProcessNameDirectlist:
         type: http
         behavior: classical
         path: ./providers/rule/ProcessNameDirectlist.yaml
         url: https://raw.fgit.cf/Leyoud/Rules/master/ProcessNameDirectlist.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
     # 全球拦截列表
@@ -250,14 +250,14 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Advertising.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     AdvertisingAppend:
         type: http
         behavior: classical
         path: ./providers/rule/AdvertisingAppend.yaml
         url: https://raw.fgit.cf/Leyoud/Rules/master/AdvertisingAppend.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
     # 全球直连列表(一)
@@ -267,21 +267,21 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/ChinaDirectlist.yaml
         url: https://raw.fgit.cf/Leyoud/Rules/master/ChinaDirectlist.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     GoogleCN:
         type: http
         behavior: classical
         path: ./providers/rule/GoogleCN.yaml
         url: https://raw.fgit.cf/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     SteamCN:
         type: http
         behavior: classical
         path: ./providers/rule/SteamCN.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
     # 电报消息
@@ -290,7 +290,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Telegram.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 油管视频
     YouTube:
@@ -298,7 +298,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/YouTube.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 奈飞视频
     Netflix:
@@ -306,7 +306,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Netflix.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 巴哈姆特
     Bahamut:
@@ -314,7 +314,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Bahamut.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 国外媒体
     GlobalMedia:
@@ -322,7 +322,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/GlobalMedia.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 哔哩哔哩
     BilibiliHMT:
@@ -330,7 +330,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/BilibiliHMT.yaml
         url: https://raw.fgit.cf/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 国内媒体
     ChinaMedia:
@@ -338,7 +338,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/ChinaMedia.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 测速平台
     Speedtest:
@@ -346,7 +346,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Speedtest.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 微软服务
     Microsoft:
@@ -354,7 +354,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Microsoft.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 苹果服务
     Apple:
@@ -362,7 +362,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Apple.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 谷歌FCM
     GoogleFCM:
@@ -370,7 +370,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/GoogleFCM.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 游戏平台
     # Start
@@ -379,35 +379,35 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/Epic.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Sony:
         type: http
         behavior: classical
         path: ./providers/rule/Sony.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Steam:
         type: http
         behavior: classical
         path: ./providers/rule/Steam.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Origin:
         type: http
         behavior: classical
         path: ./providers/rule/Origin.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Nintendo:
         type: http
         behavior: classical
         path: ./providers/rule/Nintendo.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
     # 网易音乐
@@ -416,7 +416,7 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/NetEaseMusic.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     # 代理服务列表
     # Start
@@ -425,14 +425,14 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/GlobalProxylist.yaml
         url: https://raw.fgit.cf/Leyoud/Rules/master/GlobalProxylist.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Global:
         type: http
         behavior: classical
         path: ./providers/rule/Global.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
     # 全球直连列表(二)
@@ -442,21 +442,21 @@ rule-providers:
         behavior: classical
         path: ./providers/rule/China.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     ChinaIPs:
         type: http
         behavior: classical
         path: ./providers/rule/ChinaIPs.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
 
     Download:
         type: http
         behavior: classical
         path: ./providers/rule/Download.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
-        interval: *providersHTTPInterval
+        interval: *providersInterval
     # End
 
 rules:
