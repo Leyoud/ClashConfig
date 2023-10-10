@@ -58,15 +58,15 @@ proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providers
 
 proxyGroupsProxies:
     {
-      proxies1: &proxies1 [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
+      proxiesProxy: &proxiesProxy [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
 
-      proxies2: &proxies2 [🚀 代理服务, Debug, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+      proxiesChina: &proxiesChina [DIRECT, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
-      proxies3: &proxies3 [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+      proxiesGlobal: &proxiesGlobal [🚀 代理服务, DIRECT, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
-      proxies4: &proxies4 [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug],
+      proxiesNetflix: &proxiesNetflix [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
-      proxies5: &proxies5 [DIRECT, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点]
+      proxiesBahamut: &proxiesBahamut [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug]
     }
 
 proxies:
@@ -99,7 +99,7 @@ proxy-providers:
 
 proxy-groups:
   - {
-      name: 🚀 代理服务, type: select, proxies: *proxies1
+      name: 🚀 代理服务, type: select, proxies: *proxiesProxy
     }
 
   - {
@@ -127,51 +127,51 @@ proxy-groups:
     }
 
   - {
-      name: 📲 电报消息, type: select, proxies: *proxies2
+      name: 📲 电报消息, type: select, proxies: *proxiesGlobal
     }
 
   - {
-      name: 📹 油管视频, type: select, proxies: *proxies2
+      name: 📹 油管视频, type: select, proxies: *proxiesGlobal
     }
 
   - {
-      name: 🎥 奈飞视频, type: select, proxies: *proxies3
+      name: 🎥 奈飞视频, type: select, proxies: *proxiesNetflix
     }
 
   - {
-      name: ✳️ 巴哈姆特, type: select, proxies: *proxies4
+      name: ✳️ 巴哈姆特, type: select, proxies: *proxiesBahamut
     }
 
   - {
-      name: 🌍 国外媒体, type: select, proxies: *proxies2
+      name: 🌍 国外媒体, type: select, proxies: *proxiesGlobal
     }
 
   - {
-      name: 🌏 国内媒体, type: select, proxies: *proxies5
+      name: 🌏 国内媒体, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 📺 哔哩哔哩, type: select, proxies: *proxies5
+      name: 📺 哔哩哔哩, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: ⚡️ 测速平台, type: select, proxies: *proxies5
+      name: ⚡️ 测速平台, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: Ⓜ️ 微软服务, type: select, proxies: *proxies5
+      name: Ⓜ️ 微软服务, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 🍎 苹果服务, type: select, proxies: *proxies5
+      name: 🍎 苹果服务, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 📢 谷歌FCM, type: select, proxies: *proxies5
+      name: 📢 谷歌FCM, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 🎮 游戏平台, type: select, proxies: *proxies5
+      name: 🎮 游戏平台, type: select, proxies: *proxiesChina
     }
 
   - {
@@ -187,7 +187,7 @@ proxy-groups:
     }
 
   - {
-      name: 🐟 漏网之鱼, type: select, proxies: [🚀 代理服务, ♻️ 自动选择, DIRECT, Debug]
+      name: 🐟 漏网之鱼, type: select, proxies: *proxiesGlobal
     }
 
   - {
