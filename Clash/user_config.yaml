@@ -10,15 +10,15 @@ mixed-port: 7890
 external-ui: ./
 log-level: info
 allow-lan: false
-bind-address: '*'
+bind-address: "*"
 external-controller: 127.0.0.1:9090
-secret: ''
+secret: ""
 ipv6: false
 #-------------------------------------------------------------#
 # cfw Profiles
 mode: rule
 authentication: []
-interface-name: ''
+interface-name: ""
 
 # 配置说明:
 # 1. defaults.subURL 基于 https://github.com/tindy2013/subconverter
@@ -27,7 +27,7 @@ interface-name: ''
 defaults:
   {
     # 添加服务商提供订阅(url=...) sub.xeton.dev(subconverter云端) or 127.0.0.1:25500(subconverter本地)
-    subURL: &subURL 'http://sub.xeton.dev/sub?target=clash&new_name=true&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&emoji=true&list=true&udp=true',
+    subURL: &subURL "http://sub.xeton.dev/sub?target=clash&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&new_name=true&list=true&udp=true",
 
     # 订阅和规则更新时间(s)
     providersInterval: &providersInterval 86400, # 24h
@@ -43,14 +43,14 @@ dns:
   {
     enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
 
-    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ["*.msftncsi.com", "*.msftconnecttest.com"],
 
     nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query], # default-nameserver: [223.6.6.6, 223.5.5.5],
 
     fallback: [208.67.222.222, 208.67.220.220, https://doh.opendns.com/dns-query], fallback-filter: { geoip: true, geoip-code: CN }
   }
 
-hosts: { localhost: 127.0.0.1, ip6-localhost: '::1'}
+hosts: { localhost: 127.0.0.1, ip6-localhost: "::1"}
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
@@ -82,19 +82,19 @@ proxy-providers:
     {
       cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
 
-      hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: '★|港|HK|HongKong|HKT|HKBN|HGC|WTT|CMI' },
+      hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: "★|港|HK|HongKong|HKT|HKBN|HGC|WTT|CMI" },
 
-      jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: '★|日|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan' },
+      jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: "★|日|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan" },
 
-      us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: '★|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States' },
+      us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: "★|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" },
 
-      tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: '★|台|新北|彰化|TW|Taiwan' },
+      tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: "★|台|新北|彰化|TW|Taiwan" },
 
-      sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: '★|坡|新加坡|狮城|SG|Singapore' },
+      sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: "★|坡|新加坡|狮城|SG|Singapore" },
 
-      kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: '★|韩|KR|Korea|KOR|首尔|韓' },
+      kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: "★|韩|KR|Korea|KOR|首尔|韓" },
 
-      nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: '★|奈飞|NF|解锁|Netflix|NETFLIX|Media' }
+      nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: "★|奈飞|NF|解锁|Netflix|NETFLIX|Media" }
     }
 
 proxy-groups:
