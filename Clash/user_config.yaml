@@ -32,7 +32,7 @@ defaults:
     # 订阅和规则更新时间(s)
     providersInterval: &providersInterval 86400, # 24h
 
-    # 延迟测试地址 & 间隔时长(s) & 懒加载(bool)
+    # 延迟测试地址 & 间隔时长(s) & 懒测试(bool)
     delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300, lazy: true},
 
     # url-test 延迟容差(ms)
