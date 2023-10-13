@@ -83,10 +83,12 @@ script:
       if ctx.rule_providers["Download"].match(metadata):
         return "🎯 全球直连"
 
-      # if ctx.resolve_ip(metadata["host"]) == "":
-      #   return "🐟 漏网之鱼"
+      ip = metadata["dst_ip"]
 
-      if ctx.geoip(metadata["dst_ip"]) == "CN":
+      if ip == "":
+        ip = ctx.resolve_ip(metadata["host"])
+
+      if ctx.geoip(ip) == "CN":
         return "🎯 全球直连"
 
       return "🐟 漏网之鱼"
