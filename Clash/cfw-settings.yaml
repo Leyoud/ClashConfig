@@ -58,14 +58,8 @@ childProcessText: |
     - command: ipconfigFlushdns.bat
       options:
         cwd: ipconfigFlushdns
-        windowsHide: true 
-      log: true
-
-    # 解决 ChineseMainland Github DNS 污染
-    - command: fastgithubStart.bat
-      options:
-        cwd: fastgithub
         windowsHide: true
+      log: true
 connKeepOld: true
 shortcutMixin: ""
 showProxyFilter: false
@@ -96,4 +90,4 @@ connChainType: 2
 trayProxiesStyle: 1
 useSystemEmoji: false
 useModeIcons: false
-latencyTimeout: 3000
+checkForUpdates: true
