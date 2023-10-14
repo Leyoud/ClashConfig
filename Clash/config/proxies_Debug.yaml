@@ -1,0 +1,2 @@
+# 占位
+proxies: [{ name: ★ Sub_Debug, type: socks5, server: 127.0.0.1, port: 1081 }]

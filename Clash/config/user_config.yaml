@@ -1,0 +1,495 @@
+---
+# Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/user_config.yaml
+#
+#-------------------------------------------------------------#
+# Clash使用手册 https://dreamacro.github.io/clash/zh_CN/
+# Clash管理面板 https://clash.razord.top https://yacd.haishan.me
+#-------------------------------------------------------------#
+# cfw General
+mixed-port: 7890
+external-ui: ./
+log-level: info
+allow-lan: false
+bind-address: "*"
+external-controller: 127.0.0.1:9090
+secret: ""
+ipv6: false
+#-------------------------------------------------------------#
+# cfw Profiles
+mode: rule
+authentication: []
+interface-name: ""
+
+# 配置说明:
+# 1. defaults.subURL 基于 https://github.com/tindy2013/subconverter
+# 2. rule-providers  基于 https://github.com/ACL4SSR/ACL4SSR https://github.com/blackmatrix7/ios_rule_script
+
+defaults:
+  {
+    # 添加服务商提供订阅(url=...) sub.xeton.dev(subconverter云端) or 127.0.0.1:25500(subconverter本地)
+    subURL: &subURL "http://sub.xeton.dev/sub?target=clash&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fproxies_Debug.yaml&new_name=true&list=true&udp=true",
+
+    # 订阅和规则更新时间(s)
+    providersInterval: &providersInterval 86400, # 24h
+
+    # 延迟测试地址 & 间隔时长(s) & 懒测试(bool)
+    delayInterval: &delayInterval { url: https://www.gstatic.com/generate_204, interval: 300, lazy: true},
+
+    # url-test 延迟容差(ms)
+    urlTestTolerance: &urlTestTolerance 150
+  }
+
+dns:
+  {
+    enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
+
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ["*.msftncsi.com", "*.msftconnecttest.com"],
+
+    nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query], # default-nameserver: [223.6.6.6, 223.5.5.5],
+
+    fallback: [208.67.222.222, 208.67.220.220, https://doh.opendns.com/dns-query], fallback-filter: { geoip: true, geoip-code: CN }
+  }
+
+hosts: { localhost: 127.0.0.1, ip6-localhost: "::1"}
+
+tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
+
+proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providersInterval, health-check: { enable: true, <<: *delayInterval } }
+
+proxyGroupsProxies:
+    {
+      proxiesProxy: &proxiesProxy [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
+
+      proxiesChina: &proxiesChina [DIRECT, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+
+      proxiesGlobal: &proxiesGlobal [🚀 代理服务, DIRECT, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+
+      proxiesNetflix: &proxiesNetflix [🎥 奈飞节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
+
+      proxiesBahamut: &proxiesBahamut [🇨🇳 台湾节点, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, Debug]
+    }
+
+proxies:
+  - {
+      name: Debug, type: socks5, server: 127.0.0.1, port: 1080, udp: true # 占位
+    }
+
+  - {
+      name: 🎶 解锁网易云灰色歌曲(本地), type: http, server: 127.0.0.1, port: 8080 # unblockneteasemusic server
+    }
+
+proxy-providers:
+    {
+      cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
+
+      hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: "★|港|HK|HongKong|HKT|HKBN|HGC|WTT|CMI" },
+
+      jp: { <<: *proxyProviders, path: ./providers/proxy/jp.yaml, filter: "★|日|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan" },
+
+      us: { <<: *proxyProviders, path: ./providers/proxy/us.yaml, filter: "★|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" },
+
+      tw: { <<: *proxyProviders, path: ./providers/proxy/tw.yaml, filter: "★|台|新北|彰化|TW|Taiwan" },
+
+      sg: { <<: *proxyProviders, path: ./providers/proxy/sg.yaml, filter: "★|坡|新加坡|狮城|SG|Singapore" },
+
+      kr: { <<: *proxyProviders, path: ./providers/proxy/kr.yaml, filter: "★|韩|KR|Korea|KOR|首尔|韓" },
+
+      nf: { <<: *proxyProviders, path: ./providers/proxy/nf.yaml, filter: "★|奈飞|NF|解锁|Netflix|NETFLIX|Media" }
+    }
+
+proxy-groups:
+  - {
+      name: 🚀 代理服务, type: select, proxies: *proxiesProxy
+    }
+
+  - {
+      name: 🔰 手动选择, type: select, proxies: [],
+      use: [cfw]
+    }
+
+  - {
+      name: ♻️ 自动选择, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [cfw]
+    }
+
+  - {
+      name: 🔯 故障转移, type: fallback, proxies: [], <<: *delayInterval,
+      use: [cfw]
+    }
+
+  - {
+      name: 🔮 负载均衡, type: load-balance, proxies: [], <<: *delayInterval, strategy: consistent-hashing,
+      use: [cfw]
+    }
+
+  - {
+      name: 🔗 链式代理, type: relay, proxies: [Debug]
+    }
+
+  - {
+      name: 📲 电报消息, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 📹 油管视频, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🎥 奈飞视频, type: select, proxies: *proxiesNetflix
+    }
+
+  - {
+      name: ✳️ 巴哈姆特, type: select, proxies: *proxiesBahamut
+    }
+
+  - {
+      name: 🌍 国外媒体, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🌏 国内媒体, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 📺 哔哩哔哩, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: ⚡️ 测速平台, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: Ⓜ️ 微软服务, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 🍎 苹果服务, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 📢 谷歌FCM, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 🎮 游戏平台, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)]
+    }
+
+  - {
+      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT]
+    }
+
+  - {
+      name: 🆎 全球拦截, type: select, proxies: [REJECT, DIRECT]
+    }
+
+  - {
+      name: 🐟 漏网之鱼, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🇭🇰 香港节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [hk]
+    }
+
+  - {
+      name: 🇯🇵 日本节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [jp]
+    }
+
+  - {
+      name: 🇺🇲 美国节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [us]
+    }
+
+  - {
+      name: 🇨🇳 台湾节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [tw]
+    }
+
+  - {
+      name: 🇸🇬 狮城节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [sg]
+    }
+
+  - {
+      name: 🇰🇷 韩国节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [kr]
+    }
+
+  - {
+      name: 🎥 奈飞节点, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
+      use: [nf]
+    }
+
+rule-providers:
+    # 局域网直连列表
+    # Staert
+    Lan:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Lan.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
+        interval: *providersInterval
+
+    ProcessNameDirectlist:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ProcessNameDirectlist.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/ProcessNameDirectlist.yaml
+        interval: *providersInterval
+    # End
+
+    # 全球拦截列表
+    # Start
+    Advertising:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Advertising.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
+        interval: *providersInterval
+
+    AdvertisingAppend:
+        type: http
+        behavior: classical
+        path: ./providers/rule/AdvertisingAppend.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/AdvertisingAppend.yaml
+        interval: *providersInterval
+    # End
+
+    # 全球直连列表(一)
+    # Start
+    ChinaDirectlist:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaDirectlist.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/ChinaDirectlist.yaml
+        interval: *providersInterval
+
+    GoogleCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GoogleCN.yaml
+        url: https://raw.fgit.cf/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCN.yaml
+        interval: *providersInterval
+
+    SteamCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/SteamCN.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+        interval: *providersInterval
+    # End
+
+    # 电报消息
+    Telegram:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Telegram.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+        interval: *providersInterval
+
+    # 油管视频
+    YouTube:
+        type: http
+        behavior: classical
+        path: ./providers/rule/YouTube.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+        interval: *providersInterval
+
+    # 奈飞视频
+    Netflix:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Netflix.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
+        interval: *providersInterval
+
+    # 巴哈姆特
+    Bahamut:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Bahamut.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+        interval: *providersInterval
+
+    # 国外媒体
+    GlobalMedia:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GlobalMedia.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
+        interval: *providersInterval
+
+    # 哔哩哔哩
+    BilibiliHMT:
+        type: http
+        behavior: classical
+        path: ./providers/rule/BilibiliHMT.yaml
+        url: https://raw.fgit.cf/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml
+        interval: *providersInterval
+
+    # 国内媒体
+    ChinaMedia:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaMedia.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+        interval: *providersInterval
+
+    # 测速平台
+    Speedtest:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Speedtest.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
+        interval: *providersInterval
+
+    # 微软服务
+    Microsoft:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Microsoft.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+        interval: *providersInterval
+
+    # 苹果服务
+    Apple:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Apple.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
+        interval: *providersInterval
+
+    # 谷歌FCM
+    GoogleFCM:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GoogleFCM.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml
+        interval: *providersInterval
+
+    # 游戏平台
+    # Start
+    Epic:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Epic.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
+        interval: *providersInterval
+
+    Sony:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Sony.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
+        interval: *providersInterval
+
+    Steam:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Steam.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+        interval: *providersInterval
+
+    Origin:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Origin.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Origin/Origin.yaml
+        interval: *providersInterval
+
+    Nintendo:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Nintendo.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
+        interval: *providersInterval
+    # End
+
+    # 网易音乐
+    NeteaseMusic:
+        type: http
+        behavior: classical
+        path: ./providers/rule/NetEaseMusic.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+        interval: *providersInterval
+
+    # 代理服务列表
+    # Start
+    GlobalProxylist:
+        type: http
+        behavior: classical
+        path: ./providers/rule/GlobalProxylist.yaml
+        url: https://raw.fgit.cf/Leyoud/Rules/master/GlobalProxylist.yaml
+        interval: *providersInterval
+
+    Global:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Global.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml
+        interval: *providersInterval
+    # End
+
+    # 全球直连列表(二)
+    # Start
+    China:
+        type: http
+        behavior: classical
+        path: ./providers/rule/China.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Classical.yaml
+        interval: *providersInterval
+
+    ChinaIPs:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaIPs.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+        interval: *providersInterval
+
+    Download:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Download.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
+        interval: *providersInterval
+    # End
+
+rules:
+  - RULE-SET,Lan,DIRECT
+  - RULE-SET,ProcessNameDirectlist,DIRECT
+  - RULE-SET,Advertising,🆎 全球拦截
+  - RULE-SET,AdvertisingAppend,🆎 全球拦截
+  - RULE-SET,ChinaDirectlist,🎯 全球直连
+  - RULE-SET,GoogleCN,🎯 全球直连
+  - RULE-SET,SteamCN,🎯 全球直连
+  - RULE-SET,Telegram,📲 电报消息
+  - RULE-SET,YouTube,📹 油管视频
+  - RULE-SET,Netflix,🎥 奈飞视频
+  - RULE-SET,Bahamut,✳️ 巴哈姆特
+  - RULE-SET,GlobalMedia,🌍 国外媒体
+  - RULE-SET,BilibiliHMT,📺 哔哩哔哩
+  - RULE-SET,ChinaMedia,🌏 国内媒体
+  - RULE-SET,Speedtest,⚡️ 测速平台
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,GoogleFCM,📢 谷歌FCM
+  - RULE-SET,Epic,🎮 游戏平台
+  - RULE-SET,Sony,🎮 游戏平台
+  - RULE-SET,Steam,🎮 游戏平台
+  - RULE-SET,Origin,🎮 游戏平台
+  - RULE-SET,Nintendo,🎮 游戏平台
+  - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
+  - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
+  - RULE-SET,NeteaseMusic,🎶 网易音乐
+  - RULE-SET,GlobalProxylist,🚀 代理服务
+  - RULE-SET,Global,🚀 代理服务
+  - RULE-SET,China,🎯 全球直连
+  - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
+  - RULE-SET,Download,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
