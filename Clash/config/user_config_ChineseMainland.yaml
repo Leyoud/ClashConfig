@@ -1,5 +1,5 @@
 ---
-# Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/user_config_ChineseMainland.yaml
+# Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/config/user_config_ChineseMainland.yaml
 #
 #-------------------------------------------------------------#
 # cfw General
@@ -7,26 +7,26 @@ mixed-port: 7890
 external-ui: ./
 log-level: info
 allow-lan: false
-bind-address: '*'
+bind-address: "*"
 external-controller: 127.0.0.1:9090
-secret: ''
+secret: ""
 ipv6: false
 #-------------------------------------------------------------#
 # cfw Profiles
 mode: rule
 authentication: []
-interface-name: ''
+interface-name: ""
 
 dns:
   {
     enable: true, listen: 0.0.0.0:53, ipv6: true, use-hosts: true,
 
-    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ['*.msftncsi.com', '*.msftconnecttest.com'],
+    enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ["*.msftncsi.com", "*.msftconnecttest.com"],
 
     nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query]
   }
 
-hosts: { localhost: 127.0.0.1, hanime1.me: 104.26.1.18, '+.hanime1.me': 172.67.69.183}
+hosts: { localhost: 127.0.0.1, hanime1.me: 104.26.1.18, "+.hanime1.me": 172.67.69.183}
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
@@ -57,9 +57,8 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/ProcessNameDirectlist.yaml
-        url: https://raw.fgit.cf/Leyoud/Rules/master/ProcessNameDirectlist.yaml
+        url: https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/rules/ProcessNameDirectlist.yaml
         interval: 86400
-
     Advertising:
         type: http
         behavior: classical
@@ -71,9 +70,8 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/AdvertisingAppend.yaml
-        url: https://raw.fgit.cf/Leyoud/Rules/master/AdvertisingAppend.yaml
+        url: https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/rules/AdvertisingAppend.yaml
         interval: 86400
-
     NeteaseMusic:
         type: http
         behavior: classical
