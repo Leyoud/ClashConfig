@@ -1,6 +1,10 @@
 payload:
+  # Windows
   - PROCESS-NAME,fastgithub.exe
   - PROCESS-NAME,FastGithub.UI.exe
   - PROCESS-NAME,dnscrypt-proxy.exe
   - PROCESS-NAME,subconverter.exe
   - PROCESS-NAME,unblockneteasemusic.exe
+
+  # Android
+  - PROCESS-NAME,com.mangshe.tvdown
