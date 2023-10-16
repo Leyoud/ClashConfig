@@ -5,7 +5,7 @@
 # Clash使用手册 https://dreamacro.github.io/clash/zh_CN/
 # Clash管理面板 https://clash.razord.top https://yacd.haishan.me
 #-------------------------------------------------------------#
-# cfw General
+# cfw General (Home Directory/config.yaml)
 mixed-port: 7890
 external-ui: ./
 log-level: info
@@ -15,7 +15,7 @@ external-controller: 127.0.0.1:9090
 secret: ""
 ipv6: false
 #-------------------------------------------------------------#
-# cfw Profiles
+# cfw Profiles (Home Directory/profiles/xxxx.yaml)
 mode: rule
 authentication: []
 interface-name: ""
