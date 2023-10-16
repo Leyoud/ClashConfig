@@ -65,7 +65,7 @@ dns:
     use-hosts: true # 查找 hosts 并返回 IP 记录
     fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 CIDR
     fake-ip-filter:
-        # 此列表中的主机名将不会使用fake-ip解析，仍然遵循redir-host处理逻辑
+        # 此列表中的主机名将不会使用fake-ip解析,仍然遵循redir-host处理逻辑
         - +.stun.*.*
         - +.stun.*.*.*
         - +.stun.*.*.*.*
@@ -111,7 +111,7 @@ dns:
     fallback-filter:
         # 配置fallback后默认启用fallback-filter,geoip-code为CN
         geoip: true # fallback-filter开关
-        geoip-code: CN # 国家缩写，默认值为 CN
+        geoip-code: CN # 国家缩写,默认值为 CN
         ipcidr:
             # 在这个网段内的 IP 地址会被考虑为被污染的 IP
             - 240.0.0.0/4
@@ -128,6 +128,9 @@ tun:
     dns-hijack: #dns劫持,一般设置为 any:53 即可, 即劫持所有 53 端口的 udp 流量
         - any:53
         # - tcp://any:53
+
+# 出站接口名称
+interface-name: "" #与auto-detect-interface冲突
 
 # 1.clash DNS 请求逻辑：
 #   (1) 当访问一个域名时, nameserver 与 fallback 列表内的所有服务器并发请求,得到域名对应的 IP 地址。
@@ -152,9 +155,6 @@ tun:
 # 5.Redir-Host（兼容）模式：
 #   客户端进行通讯时DNS由Clash先进行并发查询,等待返回结果后再尝试进行规则判定和连接。
 #   当判定需要代理时,使用fallback组DNS的查询结果进行通讯。实际效果：客户端响应速度一般,可能出现网页加载时间过长的情况。
-
-# 出站接口名称
-# interface-name: en0
 
 # 代理组示例
 proxies:
