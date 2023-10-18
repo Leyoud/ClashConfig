@@ -179,6 +179,10 @@ proxy-groups:
     }
 
   - {
+      name: 📺 爱奇艺, type: select, proxies: *proxiesChina
+    }
+
+  - {
       name: ⚡️ 测速平台, type: select, proxies: *proxiesChina
     }
 
@@ -396,12 +400,20 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
         interval: *providersInterval
 
-    # 哔哩哔哩
+    # 哔哩哔哩港澳台
     BilibiliHMT:
         type: http
         behavior: classical
         path: ./providers/rule/BilibiliHMT.yaml
         url: https://raw.fgit.cf/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml
+        interval: *providersInterval
+
+    # 爱奇艺港澳台
+    iQIYIIntl:
+        type: http
+        behavior: classical
+        path: ./providers/rule/iQIYIIntl.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/iQIYIIntl/iQIYIIntl.yaml
         interval: *providersInterval
 
     # 国内媒体
@@ -562,6 +574,9 @@ rules:
 
   # 哔哩哔哩港澳台
   - RULE-SET,BilibiliHMT,📺 哔哩哔哩
+
+  # 爱奇艺港澳台
+  - RULE-SET,iQIYIIntl,📺 爱奇艺
 
   # 国内媒体
   - RULE-SET,ChinaMedia,🌏 国内媒体
