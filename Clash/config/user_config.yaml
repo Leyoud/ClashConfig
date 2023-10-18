@@ -135,6 +135,30 @@ proxy-groups:
     }
 
   - {
+      name: 📱 国际抖音, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🎵 Spotify, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🛒 亚马逊, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🍃 PayPal, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🤖 Chatgpt, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
+      name: 🎥 迪士尼, type: select, proxies: *proxiesGlobal
+    }
+
+  - {
       name: 🎥 奈飞视频, type: select, proxies: *proxiesNetflix
     }
 
@@ -300,6 +324,54 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
         interval: *providersInterval
 
+    # 国际抖音
+    TikTok:
+        type: http
+        behavior: classical
+        path: ./providers/rule/TikTok.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
+        interval: *providersInterval
+
+    # Spotify音乐
+    Spotify:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Spotify.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+        interval: *providersInterval
+
+    # 亚马逊购物
+    Amazon:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Amazon.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Amazon/Amazon.yaml
+        interval: *providersInterval
+
+    # PayPal支付
+    PayPal:
+        type: http
+        behavior: classical
+        path: ./providers/rule/PayPal.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+        interval: *providersInterval
+
+    # Chatgpt人工智能
+    Chatgpt:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Chatgpt.yaml
+        url: https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/rules/Chatgpt.yaml
+        interval: *providersInterval
+
+    # 迪士尼视频
+    Disney:
+        type: http
+        behavior: classical
+        path: ./providers/rule/Disney.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+        interval: *providersInterval
+
     # 奈飞视频
     Netflix:
         type: http
@@ -308,7 +380,7 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
         interval: *providersInterval
 
-    # 巴哈姆特
+    # 巴哈姆特动画疯
     Bahamut:
         type: http
         behavior: classical
@@ -460,36 +532,67 @@ rule-providers:
     # End
 
 rules:
+  # 局域网直连
   - RULE-SET,Lan,DIRECT
   - RULE-SET,ProcessNameDirectlist,DIRECT
+
+  # 全球广告拦截
   - RULE-SET,Advertising,🆎 全球拦截
   - RULE-SET,AdvertisingAppend,🆎 全球拦截
+
+  # 全球直连(一)
   - RULE-SET,ChinaDirectlist,🎯 全球直连
   - RULE-SET,GoogleCN,🎯 全球直连
   - RULE-SET,SteamCN,🎯 全球直连
+
+  # 国外常用平台
   - RULE-SET,Telegram,📲 电报消息
   - RULE-SET,YouTube,📹 油管视频
+  - RULE-SET,TikTok,📱 国际抖音
+  - RULE-SET,Spotify,🎵 Spotify
+  - RULE-SET,Amazon,🛒 亚马逊
+  - RULE-SET,PayPal,🍃 PayPal
+  - RULE-SET,Chatgpt,🤖 Chatgpt
+  - RULE-SET,Disney,🎥 迪士尼
   - RULE-SET,Netflix,🎥 奈飞视频
   - RULE-SET,Bahamut,✳️ 巴哈姆特
+
+  # 国外媒体
   - RULE-SET,GlobalMedia,🌍 国外媒体
+
+  # 哔哩哔哩港澳台
   - RULE-SET,BilibiliHMT,📺 哔哩哔哩
+
+  # 国内媒体
   - RULE-SET,ChinaMedia,🌏 国内媒体
+
+  # 国内常用平台
   - RULE-SET,Speedtest,⚡️ 测速平台
   - RULE-SET,Microsoft,Ⓜ️ 微软服务
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,GoogleFCM,📢 谷歌FCM
+
+  # 游戏平台
   - RULE-SET,Epic,🎮 游戏平台
   - RULE-SET,Sony,🎮 游戏平台
   - RULE-SET,Steam,🎮 游戏平台
   - RULE-SET,Origin,🎮 游戏平台
   - RULE-SET,Nintendo,🎮 游戏平台
+
+  # 网易音乐
   - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
   - PROCESS-NAME,com.netease.cloudmusic,🎶 网易音乐
   - RULE-SET,NeteaseMusic,🎶 网易音乐
+
+  # 代理服务
   - RULE-SET,GlobalProxylist,🚀 代理服务
   - RULE-SET,Global,🚀 代理服务
+
+  # 全球直连(二)
   - RULE-SET,China,🎯 全球直连
   - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
   - RULE-SET,Download,🎯 全球直连
   - GEOIP,CN,🎯 全球直连
+
+  # 规则未命中
   - MATCH,🐟 漏网之鱼
