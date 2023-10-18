@@ -143,19 +143,19 @@ proxy-groups:
     }
 
   - {
-      name: 🛒 亚马逊, type: select, proxies: *proxiesGlobal
+      name: 🛒 亚马逊商城, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 🍃 PayPal, type: select, proxies: *proxiesGlobal
+      name: 🍃 PayPal, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 🤖 Chatgpt, type: select, proxies: *proxiesGlobal
+      name: 🤖 Chatgpt, type: select, proxies: *proxiesChina
     }
 
   - {
-      name: 🎥 迪士尼, type: select, proxies: *proxiesGlobal
+      name: 🎥 迪士尼视频, type: select, proxies: *proxiesGlobal
     }
 
   - {
@@ -344,7 +344,7 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
         interval: *providersInterval
 
-    # 亚马逊购物
+    # 亚马逊商城
     Amazon:
         type: http
         behavior: classical
@@ -562,10 +562,10 @@ rules:
   - RULE-SET,YouTube,📹 油管视频
   - RULE-SET,TikTok,📱 国际抖音
   - RULE-SET,Spotify,🎵 Spotify
-  - RULE-SET,Amazon,🛒 亚马逊
+  - RULE-SET,Amazon,🛒 亚马逊商城
   - RULE-SET,PayPal,🍃 PayPal
   - RULE-SET,Chatgpt,🤖 Chatgpt
-  - RULE-SET,Disney,🎥 迪士尼
+  - RULE-SET,Disney,🎥 迪士尼视频
   - RULE-SET,Netflix,🎥 奈飞视频
   - RULE-SET,Bahamut,✳️ 巴哈姆特
 
