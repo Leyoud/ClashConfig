@@ -310,6 +310,13 @@ rule-providers:
         path: ./providers/rule/SteamCN.yaml
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
         interval: *providersInterval
+
+    AmazonCN:
+        type: http
+        behavior: classical
+        path: ./providers/rule/AmazonCN.yaml
+        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/AmazonCN/AmazonCN.yaml
+        interval: *providersInterval
     # End
 
     # 电报消息
@@ -556,6 +563,7 @@ rules:
   - RULE-SET,ChinaDirectlist,🎯 全球直连
   - RULE-SET,GoogleCN,🎯 全球直连
   - RULE-SET,SteamCN,🎯 全球直连
+  - RULE-SET,AmazonCN,🎯 全球直连
 
   # 国外常用平台
   - RULE-SET,Telegram,📲 电报消息
