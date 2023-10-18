@@ -1,5 +1,6 @@
 payload:
   # Windows
+  - PROCESS-NAME,svchost.exe
   - PROCESS-NAME,fastgithub.exe
   - PROCESS-NAME,FastGithub.UI.exe
   - PROCESS-NAME,dnscrypt-proxy.exe
