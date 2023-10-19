@@ -1,5 +1,4 @@
 # https://github.com/wgetnz/chatgpt-openclash
-
 payload:
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,pay.openai.com

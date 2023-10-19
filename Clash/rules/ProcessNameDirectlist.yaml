@@ -1,5 +1,4 @@
 # https://github.com/Leyoud/LEYOUD
-
 payload:
   # Windows
   - PROCESS-NAME,svchost.exe
