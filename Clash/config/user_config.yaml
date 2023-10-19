@@ -171,10 +171,6 @@ proxy-groups:
     }
 
   - {
-      name: 🌏 国内媒体, type: select, proxies: *proxiesChina
-    }
-
-  - {
       name: ⚡️ 测速平台, type: select, proxies: *proxiesChina
     }
 
@@ -200,6 +196,10 @@ proxy-groups:
 
   - {
       name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)]
+    }
+
+  - {
+      name: 🌏 国内媒体, type: select, proxies: *proxiesChina
     }
 
   - {
