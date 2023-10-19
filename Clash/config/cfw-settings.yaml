@@ -52,9 +52,9 @@ childProcessText: |
         - "bilibili"
       options:
         cwd: unblockneteasemusic
-        windowsHide: true 
+        windowsHide: true
 
-    # 清除dns解析缓存
+    # 清除dns解析缓存 echo ipconfig /flushdns >ipconfigFlushdns.bat
     - command: ipconfigFlushdns.bat
       options:
         cwd: ipconfigFlushdns
