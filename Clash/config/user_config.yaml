@@ -391,7 +391,7 @@ rule-providers:
         url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
         interval: *providersInterval
 
-    # 巴哈姆特 动画疯
+    # 巴哈姆特动画疯
     Bahamut:
         type: http
         behavior: classical
