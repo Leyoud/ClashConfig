@@ -80,7 +80,7 @@ proxies:
 
 proxy-providers:
     {
-      cfw: { <<: *proxyProviders, path: ./providers/proxy/cfw.yaml },
+      all: { <<: *proxyProviders, path: ./providers/proxy/all.yaml },
 
       hk: { <<: *proxyProviders, path: ./providers/proxy/hk.yaml, filter: "★|港|HK|HongKong|HKT|HKBN|HGC|WTT|CMI" },
 
@@ -104,22 +104,22 @@ proxy-groups:
 
   - {
       name: 🔰 手动选择, type: select, proxies: [],
-      use: [cfw]
+      use: [all]
     }
 
   - {
       name: ♻️ 自动选择, type: url-test, proxies: [], <<: *delayInterval, tolerance: *urlTestTolerance,
-      use: [cfw]
+      use: [all]
     }
 
   - {
       name: 🔯 故障转移, type: fallback, proxies: [], <<: *delayInterval,
-      use: [cfw]
+      use: [all]
     }
 
   - {
       name: 🔮 负载均衡, type: load-balance, proxies: [], <<: *delayInterval, strategy: consistent-hashing,
-      use: [cfw]
+      use: [all]
     }
 
   - {
