@@ -32,6 +32,7 @@ payload:
 
   # clash
   - DOMAIN,dreamacro.github.io
+  # - DOMAIN,lancellc.gitbook.io
   - DOMAIN,wiki.metacubex.one
   - DOMAIN,docs.cfw.lbyczf.com
 
