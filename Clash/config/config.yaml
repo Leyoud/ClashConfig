@@ -61,7 +61,7 @@ dns:
     enable: false # dns开关
     ipv6: true    # 当为 false 时, AAAA 查询的响应将为空
     listen: 0.0.0.0:53  # dns监听服务
-    enhanced-mode: fake-ip # dns处理模式, redir-host模式已弃用
+    enhanced-mode: fake-ip # dns处理模式, redir-host模式自premium-2023.02.16开始已弃用
     use-hosts: true # 查找 hosts 并返回 IP 记录
     fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 CIDR
     fake-ip-filter:
@@ -129,8 +129,8 @@ tun:
         - any:53
         # - tcp://any:53
 
-# 出站接口名称
-interface-name: "" #与auto-detect-interface冲突
+# 出站接口名称 与auto-detect-interface冲突
+interface-name: ""
 
 # 1.clash DNS 请求逻辑：
 #   (1) 当访问一个域名时, nameserver 与 fallback 列表内的所有服务器并发请求,得到域名对应的 IP 地址。
