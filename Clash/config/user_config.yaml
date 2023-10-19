@@ -175,14 +175,6 @@ proxy-groups:
     }
 
   - {
-      name: 📺 哔哩哔哩, type: select, proxies: *proxiesChina
-    }
-
-  - {
-      name: 📺 爱奇艺, type: select, proxies: *proxiesChina
-    }
-
-  - {
       name: ⚡️ 测速平台, type: select, proxies: *proxiesChina
     }
 
@@ -199,11 +191,19 @@ proxy-groups:
     }
 
   - {
-      name: 🎮 游戏平台, type: select, proxies: *proxiesChina
+      name: 📺 哔哩哔哩, type: select, proxies: *proxiesChina
+    }
+
+  - {
+      name: 📺 爱奇艺, type: select, proxies: *proxiesChina
     }
 
   - {
       name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)]
+    }
+
+  - {
+      name: 🎮 游戏平台, type: select, proxies: *proxiesChina
     }
 
   - {
