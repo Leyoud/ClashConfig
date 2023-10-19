@@ -23,11 +23,32 @@ script:
       if ctx.rule_providers["SteamCN"].match(metadata):
         return "🎯 全球直连"
 
+      if ctx.rule_providers["AmazonCN"].match(metadata):
+        return "🎯 全球直连"
+
       if ctx.rule_providers["Telegram"].match(metadata):
         return "📲 电报消息"
 
       if ctx.rule_providers["YouTube"].match(metadata):
         return "📹 油管视频"
+
+      if ctx.rule_providers["TikTok"].match(metadata):
+        return "📱 国际抖音"
+
+      if ctx.rule_providers["Spotify"].match(metadata):
+        return "🎵 Spotify"
+
+      if ctx.rule_providers["Amazon"].match(metadata):
+        return "🛒 亚马逊商城"
+
+      if ctx.rule_providers["PayPal"].match(metadata):
+        return "🍃 PayPal"
+
+      if ctx.rule_providers["Chatgpt"].match(metadata):
+        return "🤖 Chatgpt"
+
+      if ctx.rule_providers["Disney"].match(metadata):
+        return "🎥 迪士尼Plus"
 
       if ctx.rule_providers["Netflix"].match(metadata):
         return "🎥 奈飞视频"
@@ -36,7 +57,7 @@ script:
         return "✳️ 巴哈姆特"
 
       if ctx.rule_providers["GlobalMedia"].match(metadata):
-        return "🌏 国内媒体"
+        return "🌍 国外媒体"
 
       if ctx.rule_providers["Speedtest"].match(metadata):
         return "⚡️ 测速平台"
@@ -49,6 +70,18 @@ script:
 
       if ctx.rule_providers["GoogleFCM"].match(metadata):
         return "📢 谷歌FCM"
+
+      if ctx.rule_providers["BilibiliHMT"].match(metadata):
+        return "📺 哔哩哔哩"
+
+      if ctx.rule_providers["iQIYIIntl"].match(metadata):
+        return "📺 爱奇艺"
+
+      if ctx.rule_providers["NeteaseMusic"].match(metadata):
+        return "🎶 网易音乐"
+
+      if ctx.rule_providers["GlobalMedia"].match(metadata):
+        return "🌏 国内媒体"
 
       if ctx.rule_providers["Epic"].match(metadata):
         return "🎮 游戏平台"
@@ -64,9 +97,6 @@ script:
 
       if ctx.rule_providers["Nintendo"].match(metadata):
         return "🎮 游戏平台"
-
-      if ctx.rule_providers["NeteaseMusic"].match(metadata):
-        return "🎶 网易音乐"
 
       if ctx.rule_providers["GlobalProxylist"].match(metadata):
         return "🚀 代理服务"
