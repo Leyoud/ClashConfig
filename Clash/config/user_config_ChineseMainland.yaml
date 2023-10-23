@@ -1,5 +1,5 @@
 ---
-# Download https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/config/user_config_ChineseMainland.yaml
+# Download https://raw.gitmirror.com/Leyoud/LEYOUD/master/Clash/config/user_config_ChineseMainland.yaml
 #
 #-------------------------------------------------------------#
 # cfw General (Home Directory/config.yaml)
@@ -50,40 +50,40 @@ rule-providers:
         type: http
         behavior: classical
         path: ./providers/rule/Lan.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
+        url: https://raw.gitmirror.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
         interval: 86400
 
     ProcessNameDirectlist:
         type: http
         behavior: classical
         path: ./providers/rule/ProcessNameDirectlist.yaml
-        url: https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/rules/ProcessNameDirectlist.yaml
+        url: https://raw.gitmirror.com/Leyoud/LEYOUD/master/Clash/rules/ProcessNameDirectlist.yaml
         interval: 86400
     Advertising:
         type: http
         behavior: classical
         path: ./providers/rule/Advertising.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
+        url: https://raw.gitmirror.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
         interval: 86400
 
     AdvertisingAppend:
         type: http
         behavior: classical
         path: ./providers/rule/AdvertisingAppend.yaml
-        url: https://raw.fgit.cf/Leyoud/LEYOUD/master/Clash/rules/AdvertisingAppend.yaml
+        url: https://raw.gitmirror.com/Leyoud/LEYOUD/master/Clash/rules/AdvertisingAppend.yaml
         interval: 86400
     NeteaseMusic:
         type: http
         behavior: classical
         path: ./providers/rule/NetEaseMusic.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
+        url: https://raw.gitmirror.com/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml
         interval: 86400
 
     ChinaIPs:
         type: http
         behavior: classical
         path: ./providers/rule/ChinaIPs.yaml
-        url: https://raw.fgit.cf/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+        url: https://raw.gitmirror.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
         interval: 86400
 
 rules:
