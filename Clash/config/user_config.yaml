@@ -272,7 +272,7 @@ rule-providers:
         interval: *providersInterval
     # End
 
-    # 全球广告拦截
+    # 全球拦截
     # Start
     Advertising:
         type: http
@@ -543,7 +543,7 @@ rules:
   - RULE-SET,Lan,DIRECT
   - RULE-SET,ProcessNameDirectlist,DIRECT
 
-  # 全球广告拦截
+  # 全球拦截
   - RULE-SET,Advertising,🆎 全球拦截
   - RULE-SET,AdvertisingAppend,🆎 全球拦截
 
