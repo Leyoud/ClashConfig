@@ -90,4 +90,4 @@ connChainType: 2
 trayProxiesStyle: 1
 useSystemEmoji: false
 useModeIcons: false
-checkForUpdates: true
+checkForUpdates: false
