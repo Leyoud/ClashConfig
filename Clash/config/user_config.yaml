@@ -27,7 +27,7 @@ interface-name: ""
 
 defaults:
   {
-    # 添加服务商提供订阅(url=...) sub.xeton.dev(subconverter云端) or 127.0.0.1:25500(subconverter本地)
+    # 添加服务商提供订阅(url=...), sub.xeton.dev(subconverter云端) | 127.0.0.1:25500(subconverter本地)
     subURL: &subURL "http://sub.xeton.dev/sub?target=clash&url=|订阅链接1|订阅链接2|订阅链接++|https%3A%2F%2Fraw.githubusercontent.com%2FLeyoud%2FLEYOUD%2Fmaster%2FClash%2Fconfig%2Fproxies_Debug.yaml&new_name=true&list=true&udp=true",
 
     # 订阅和规则更新时间(s)
