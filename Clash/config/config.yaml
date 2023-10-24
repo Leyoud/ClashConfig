@@ -110,7 +110,7 @@ dns:
         - https://dns.google/dns-query # 谷歌 DoH DNS
     fallback-filter:
         # 配置fallback后默认启用fallback-filter,geoip-code为CN
-        geoip: true # fallback-filter开关
+        geoip: true # fallback-filter开关默认值为 true
         geoip-code: CN # 国家缩写,默认值为 CN
         ipcidr:
             # 在这个网段内的 IP 地址会被考虑为被污染的 IP
@@ -122,7 +122,7 @@ dns:
 
 tun:
     enable: false # tun模式开关
-    stack: gvisor #tun模式堆栈 gvisor | system (需系统防火墙放行)
+    stack: gvisor #tun模式堆栈, gvisor | system (需系统防火墙放行)
     auto-route: true #自动设置全局路由
     auto-detect-interface: true #自动选择流量出站接口 (与interface-name冲突)
     dns-hijack: #dns劫持,一般设置为 any:53 即可, 即劫持所有 53 端口的 udp 流量
