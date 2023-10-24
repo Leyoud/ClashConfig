@@ -59,7 +59,7 @@ proxyProviders: &proxyProviders { url: *subURL, type: http, interval: *providers
 
 proxyGroupsProxies:
     {
-      proxiesProxy: &proxiesProxy [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 链式代理, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
+      proxiesProxy: &proxiesProxy [♻️ 自动选择, 🔰 手动选择, 🔯 故障转移, 🔮 负载均衡, 🔗 中继链路, Debug, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, DIRECT, REJECT],
 
       proxiesChina: &proxiesChina [DIRECT, 🚀 代理服务, ♻️ 自动选择, 🔰 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点],
 
@@ -124,7 +124,7 @@ proxy-groups:
     }
 
   - {
-      name: 🔗 链式代理, type: relay, proxies: [Debug]
+      name: 🔗 中继链路, type: relay, proxies: [Debug]
     }
 
   - {
