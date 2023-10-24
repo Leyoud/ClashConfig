@@ -256,7 +256,7 @@ proxy-groups:
 
 rule-providers:
     # 局域网直连
-    # Staert
+    # Start
     Lan:
         type: http
         behavior: classical
