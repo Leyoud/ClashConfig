@@ -291,13 +291,6 @@ rule-providers:
 
     # 全球直连(一)
     # Start
-    ChinaDirectlist:
-        type: http
-        behavior: classical
-        path: ./providers/rule/ChinaDirectlist.yaml
-        url: https://raw.gitmirror.com/Leyoud/LEYOUD/master/Clash/rules/ChinaDirectlist.yaml
-        interval: *providersInterval
-
     GoogleCN:
         type: http
         behavior: classical
@@ -516,6 +509,13 @@ rule-providers:
 
     # 全球直连(二)
     # Start
+    ChinaDirectlist:
+        type: http
+        behavior: classical
+        path: ./providers/rule/ChinaDirectlist.yaml
+        url: https://raw.gitmirror.com/Leyoud/LEYOUD/master/Clash/rules/ChinaDirectlist.yaml
+        interval: *providersInterval
+
     China:
         type: http
         behavior: classical
@@ -548,7 +548,6 @@ rules:
   - RULE-SET,AdvertisingAppend,🆎 全球拦截
 
   # 全球直连(一)
-  - RULE-SET,ChinaDirectlist,🎯 全球直连
   - RULE-SET,GoogleCN,🎯 全球直连
   - RULE-SET,SteamCN,🎯 全球直连
   - RULE-SET,AmazonCN,🎯 全球直连
@@ -590,10 +589,11 @@ rules:
   - RULE-SET,Global,🚀 代理服务
 
   # 全球直连(二)
+  - RULE-SET,ChinaDirectlist,🎯 全球直连
   - RULE-SET,China,🎯 全球直连
   - RULE-SET,ChinaIPs,🎯 全球直连,no-resolve
   - RULE-SET,Download,🎯 全球直连
   - GEOIP,CN,🎯 全球直连
 
-  # 规则未命中
+  # 漏网之鱼
   - MATCH,🐟 漏网之鱼
