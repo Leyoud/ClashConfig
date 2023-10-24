@@ -5,7 +5,7 @@ mixed-port: 7890
 # Linux 和 macOS 的透明代理服务端口 (TCP 和 TProxy UDP 重定向)
 redir-port: 7892
 
-# 允许局域网的连接
+# 允许局域网的连接 (需系统防火墙放行)
 allow-lan: false
 
 # 仅在将allow-lan设置为true时适用
@@ -122,14 +122,14 @@ dns:
 
 tun:
     enable: false # tun模式开关
-    stack: gvisor #tun模式堆栈
+    stack: gvisor #tun模式堆栈 gvisor | system (需系统防火墙放行)
     auto-route: true #自动设置全局路由
-    auto-detect-interface: true #自动选择流量出站接口 与interface-name冲突
+    auto-detect-interface: true #自动选择流量出站接口 (与interface-name冲突)
     dns-hijack: #dns劫持,一般设置为 any:53 即可, 即劫持所有 53 端口的 udp 流量
         - any:53
         # - tcp://any:53
 
-# 出站接口名称 与auto-detect-interface冲突
+# 出站接口名称 (与auto-detect-interface冲突)
 interface-name: ""
 
 # 1.clash DNS 请求逻辑：
