@@ -34,15 +34,15 @@ proxies: [ { name: 🎶 解锁网易云灰色歌曲(本地), type: http, server:
 
 proxy-groups:
   - {
-      name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)] 
+      name: 🎶 网易音乐, type: select, proxies: [DIRECT, 🎶 解锁网易云灰色歌曲(本地)]
     }
 
   - {
-      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT] 
+      name: 🎯 全球直连, type: select, proxies: [DIRECT, REJECT]
     }
 
   - {
-      name: 🆎 全球拦截, type: select, proxies: [REJECT, DIRECT] 
+      name: 🆎 全球拦截, type: select, proxies: [REJECT, DIRECT]
     }
 
 rule-providers:
