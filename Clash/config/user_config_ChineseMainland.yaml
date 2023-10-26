@@ -89,6 +89,7 @@ rule-providers:
 rules:
   - RULE-SET,Lan,DIRECT
   - RULE-SET,ProcessNameDirectlist,DIRECT
+  - DOMAIN,boxer.baidu.com,🎯 全球直连
   - RULE-SET,Advertising,🆎 全球拦截
   - RULE-SET,AdvertisingAppend,🆎 全球拦截
   - PROCESS-NAME,cloudmusic.exe,🎶 网易音乐
