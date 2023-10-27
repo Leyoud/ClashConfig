@@ -1,4 +1,8 @@
 ---
+#-------------------------------------------------------------#
+# Clash使用手册 https://dreamacro.github.io/clash/zh_CN
+# Clash管理面板 https://clash.razord.top https://yacd.haishan.me
+#-------------------------------------------------------------#
 # HTTP(S) 和 SOCKS4(A)/SOCKS5 代理服务共用一个端口
 mixed-port: 7890
 
@@ -33,8 +37,6 @@ secret: ""
 # `http://{{external-controller}}/ui` 中提供服务.
 # http://0.0.0.0:9090/ui
 # external-ui: folder
-# yacd面板：  https://yacd.haishan.me
-# Razord面板：https://clash.razord.top
 external-ui: ./
 
 # 本地 SOCKS5 / HTTP(S) 服务认证
@@ -83,12 +85,10 @@ dns:
         '+.internal.crop.com': 10.0.0.1
     default-nameserver:
         # 为nameserver设置默认值(可选), 必须为 ip
-        - 114.114.114.114
-        - 8.8.8.8
-    nameserver:
-        # 默认dns解析 支持 UDP、TCP、DoT、DoH
         - 223.6.6.6 # 阿里DNS
         - 223.5.5.5 # 阿里DNS
+    nameserver:
+        # 默认dns解析 支持 UDP、TCP、DoT、DoH
         - 180.76.76.76 # 百度DNS
         - 119.29.29.29 # 腾讯DNS
         - 117.50.10.10 # ONE DNS纯净版
@@ -98,27 +98,6 @@ dns:
         - https://dns.alidns.com/dns-query # 阿里 DoH DNS
         - https://alidns_ip/dns-query # 阿里 DoH DNS
         - https://doh.360.cn/dns-query # 360 DoH DNS
-    fallback:
-        # 备用dns解析(可选),对抗 DNS 污染攻击的一种措施 支持 UDP、TCP、DoT、DoH
-        - 8.8.8.8 # 谷歌DNS
-        - 1.1.1.1 # Cloudflare DNS
-        - tls://dns.rubyfish.cn:853 # 红鱼 DoT DNS
-        - tls://1.0.0.1:853 # Cloudflare DoT DNS
-        - tls://dns.google:853 # 谷歌 DoT DNS
-        - https://dns.rubyfish.cn/dns-query # 红鱼 DoH DNS
-        - https://cloudflare-dns.com/dns-query # Cloudflare DoH DNS
-        - https://dns.google/dns-query # 谷歌 DoH DNS
-    fallback-filter:
-        # 配置fallback后默认启用fallback-filter,geoip-code为CN
-        geoip: true # fallback-filter开关默认值为 true
-        geoip-code: CN # 国家缩写,默认值为 CN
-        ipcidr:
-            # 在这个网段内的 IP 地址会被考虑为被污染的 IP
-            - 240.0.0.0/4
-        domain: #这些域名被视为已污染,匹配到这些域名,会直接使用 fallback解析
-            - "+.google.com"
-            - "+.facebook.com"
-            - "+.youtube.com"
 
 tun:
     enable: false # tun模式开关
@@ -132,29 +111,17 @@ tun:
 # 出站接口名称 (与auto-detect-interface冲突)
 interface-name: ""
 
-# 1.clash DNS 请求逻辑：
-#   (1) 当访问一个域名时, nameserver 与 fallback 列表内的所有服务器并发请求,得到域名对应的 IP 地址。
-#   (2) clash 将选取 nameserver 列表内,解析最快的结果。
-#   (3) 若解析结果中,IP 地址属于 国外,那么 clash 将选择 fallback 列表内,解析最快的结果。
+# 关于clash.DNS的解释
+# https://github.com/Fndroid/clash_for_windows_pkg/wiki/DNS%E6%B1%A1%E6%9F%93%E5%AF%B9Clash%EF%BC%88for-Windows%EF%BC%89%E7%9A%84%E5%BD%B1%E5%93%8D
 #
-# 2.clash DNS 配置注意事项：
-#   (1) 如果为了确保 DNS 解析结果无污染,请仅保留列表内以 tls:// 或 https:// 开头的 DNS。
-#   (2) 如果不在乎可能解析到污染的结果,更加追求速度, 仅保留nameserver列表并将fallback列表中的DNS插入到nameserver。
+# 为什么不在clash.DNS中添加fallback
+# https://github.com/Dreamacro/clash/issues/642#issuecomment-816448986
 #
-# 3.关于 DNS over HTTPS (DoH) 和 DNS over TLS (DoT) 的选择：
-#   DoH: 以 https:// 开头的 DNS 服务器。拥有更好的伪装性,且几乎不可能被运营商或网络管理封锁,但查询效率和安全性可能略低。
-#   DoT: 以 tls:// 开头的 DNS 服务器。拥有更高的安全性和查询效率,但端口有可能被管制或封锁。
-#   若要了解更多关于 DoH/DoT 相关技术,请自行查阅规范文档。
+# clash.DNS使用fake-ip模式时, 出现系统检测到网卡无法联网, 微软系APP无法登陆使用等问题
+# https://docs.cfw.lbyczf.com/contents/tap.html#%E5%AE%89%E8%A3%85-tap-%E7%BD%91%E5%8D%A1
 #
-# 4.Fake-IP（增强）模式：
-#   客户端进行通讯时会先进行DNS查询目标IP地址,拿到查询结果后再尝试进行连接。Fake-IP 模式在客户端发起DNS请求时会立即返回一个保留地址（198.18.0.1/16）,
-#   同时向上游DNS服务器查询结果,如果判定返回结果为污染或者命中代理规则,则直接发送域名至代理服务器进行远端解析。此时客户端立即向Fake-IP发起的请求会被快速响应,
-#   节约了一次本地向DNS服务器查询的时间。实际效果：客户端响应速度加快,浏览体验更加顺畅,减轻网页加载时间过长的情况。
-#   当 Clash 重启时,Fake IP 会重新从头开始分配；如果设备或软件缓存了 Clash 重启前解析的 Fake IP,可能会出现无法访问等问题。
-#
-# 5.Redir-Host（兼容）模式：
-#   客户端进行通讯时DNS由Clash先进行并发查询,等待返回结果后再尝试进行规则判定和连接。
-#   当判定需要代理时,使用fallback组DNS的查询结果进行通讯。实际效果：客户端响应速度一般,可能出现网页加载时间过长的情况。
+# 代理环境中的 DNS 解析行为
+# https://blog.skk.moe/post/what-happend-to-dns-in-proxy
 
 # 代理组示例
 proxies:

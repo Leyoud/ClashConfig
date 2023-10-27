@@ -46,7 +46,7 @@ dns:
 
     enhanced-mode: fake-ip, fake-ip-range: 198.18.0.1/16, fake-ip-filter: ["*.msftncsi.com", "*.msftconnecttest.com"],
 
-    nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query], # default-nameserver: [223.6.6.6, 223.5.5.5]
+    nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query]
   }
 
 hosts: { localhost: 127.0.0.1, ip6-localhost: "::1"}
