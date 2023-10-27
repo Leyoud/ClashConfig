@@ -120,7 +120,7 @@ interface-name: ""
 # clash.DNS使用fake-ip模式时, 出现系统检测到网卡无法联网, 微软系APP无法登陆使用等问题
 # https://docs.cfw.lbyczf.com/contents/tap.html#%E5%AE%89%E8%A3%85-tap-%E7%BD%91%E5%8D%A1
 #
-# 代理环境中的 DNS 解析行为
+# 关于代理环境中的 DNS 解析行为
 # https://blog.skk.moe/post/what-happend-to-dns-in-proxy
 
 # 代理组示例
