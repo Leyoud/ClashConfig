@@ -3,6 +3,7 @@
 # update: 2024-06-22 14:47:20 
 payload:
 # CorelDraw 反盗版验证 start
+  - PROCESS-NAME,CorelDRW.exe
   - DOMAIN,apps.corel.com
   - DOMAIN,mc.corel.com
   - DOMAIN,origin-mc.corel.com
