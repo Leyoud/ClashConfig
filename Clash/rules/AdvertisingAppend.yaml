@@ -2,6 +2,53 @@
 # https://github.com/lingeringsound/10007_auto
 # update: 2024-06-22 14:47:20 
 payload:
+# CorelDraw 反盗版验证 start
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+  - DOMAIN,powerservice.csii.com.cn
+  - DOMAIN,54.209.36.221
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+  - DOMAIN,apps.corel.com
+  - DOMAIN,www.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,content.corel.com
+  - DOMAIN,65.200.22.154
+  - DOMAIN,65.200.22.99
+  - DOMAIN,ipp.corel.com
+  - DOMAIN,secure.ipp.corel.com
+  - DOMAIN,lm.licenses.adobe.com
+  - DOMAIN,na2m-pr.licenses.adobe.com
+  - DOMAIN,practivate.adobe.com
+  - DOMAIN,activate.adobe.com
+  - DOMAIN,ereg.adobe.com
+  - DOMAIN,wip.adobe.com
+  - DOMAIN,lmlicenses.wip4.adobe.com
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+  - DOMAIN,apps.corel.com
+  - DOMAIN,mc.corel.com
+  - DOMAIN,origin-mc.corel.com
+  - DOMAIN,iws.corel.com
+#   CorelDraw 反盗版验证 end
+
+#   去广告 start
   - DOMAIN,0.r.msn.com
   - DOMAIN,0.twitter.com
   - DOMAIN,0024ad98dd.com
