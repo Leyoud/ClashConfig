@@ -26,7 +26,7 @@ dns:
     nameserver: [tls://dns.alidns.com:853, https://dns.alidns.com/dns-query]
   }
 
-hosts: { localhost: 127.0.0.1, hanime1.me: 104.26.1.18, "+.hanime1.me": 172.67.69.183}
+hosts: { localhost: 127.0.0.1, hanime1.com: 172.67.167.30, hanime1.me: 104.26.1.18, "+.hanime1.me": 172.67.69.183}
 
 tun: { enable: true, stack: gvisor, auto-route: true, auto-detect-interface: true, dns-hijack: [any:53] }
 
